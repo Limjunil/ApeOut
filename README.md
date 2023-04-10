@@ -4,8 +4,8 @@ Make a ApeOut Game Project
 
 
 
-# [Junil]
+## [Junil]
 23/04/10 -     
 
-# [YMG]
+## [YMG]
 
