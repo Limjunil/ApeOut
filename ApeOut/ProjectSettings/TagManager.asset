@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - Map
+  - Enemy
+  - Player
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 3516161559
+    locked: 0
+  - name: Wall
+    uniqueID: 1871741371
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 2043423425
+    locked: 0
+  - name: BackMap
+    uniqueID: 133250807
+    locked: 0
+  - name: BackObjs
+    uniqueID: 4022304531
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 1743958031
+    locked: 0
+  - name: Player
+    uniqueID: 2256973081
+    locked: 0
+  - name: New Layer 6
+    uniqueID: 392996953
+    locked: 0
+  - name: New Layer 15
+    uniqueID: 4105671307
+    locked: 0
+  - name: FrontMap
+    uniqueID: 2104949483
+    locked: 0
+  - name: FrontObjs
+    uniqueID: 1459057515
+    locked: 0
+  - name: New Layer 8
+    uniqueID: 4214170883
+    locked: 0
+  - name: New Layer 14
+    uniqueID: 368743009
+    locked: 0
+  - name: BackUI
+    uniqueID: 2706460887
+    locked: 0
+  - name: FrontUI
+    uniqueID: 1444391983
+    locked: 0
