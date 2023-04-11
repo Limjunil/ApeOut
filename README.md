@@ -5,8 +5,8 @@ Make a ApeOut Game Project
 
 
 ## [Junil]
-23/04/10 - Make CursorImg and Camera Move    
-   
+23/04/11 - Make CursorImg and Camera Move    
+23/04/11 - Make Player Move and Player Input    
 
 ## [YMG]
 04/11 - 기본세팅 On    
