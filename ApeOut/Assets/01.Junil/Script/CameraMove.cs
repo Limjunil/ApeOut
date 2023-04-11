@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class CameraMove : MonoBehaviour
 {
 
-    public const float SPEED_CAMERA = 4f;
+    public const float SPEED_CAMERA = 1f;
 
     public float cameraHeight = default;
     public float cameraWidth = default;
