@@ -5,7 +5,7 @@ Make a ApeOut Game Project
 
 
 ## [Junil]
-23/04/10 -  
+23/04/10 - Make CursorImg and Camera Move    
    
 
 ## [YMG]
