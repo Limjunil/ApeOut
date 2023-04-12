@@ -15,8 +15,8 @@ public class CameraMove : MonoBehaviour
     // 예외 거리 값
     public float exceptionRangeVal = default;
 
+    public bool isWall = false;
 
-    public Vector3 offset = default;
 
     // Start is called before the first frame update
     void Start()
@@ -24,10 +24,9 @@ public class CameraMove : MonoBehaviour
         cameraHeight = Camera.main.orthographicSize;
         cameraWidth = cameraHeight * Screen.width / Screen.height;
 
-        exceptionRangeVal = 0.4f;
+        exceptionRangeVal = 1f;
 
-
-        offset = new Vector3(0f, 8f, 0f);
+        isWall = false;
 
         GetTargetPlayer();
     }
@@ -36,6 +35,8 @@ public class CameraMove : MonoBehaviour
 
     private void LateUpdate()
     {
+        //if(isWall == true) { return; }
+
         //gameObject.transform.position = targetPlayer.transform.position + offset;
 
         var mousPosTest_ = Input.mousePosition;
@@ -59,6 +60,8 @@ public class CameraMove : MonoBehaviour
         // 새로운 카메라 위치를 잡아주기 위한 값들
         Vector3 testCamera_ = new Vector3(clampMinX, 8f, clampMinZ);
         Vector3 targetCameraPos_ = new Vector3(targetPos_.x, 8f, targetPos_.z);
+
+        gameObject.transform.position = Vector3.Lerp(transform.position, testCamera_, SPEED_CAMERA * Time.deltaTime);
 
         // 예외 범위를 지정하여 카메라 위치를 잡는 조건
         if ((targetPos_.x - (cameraWidth * exceptionRangeVal) <= clampMinX && clampMinX <= targetPos_.x + (cameraWidth * exceptionRangeVal)) &&
@@ -87,4 +90,15 @@ public class CameraMove : MonoBehaviour
             /* Do Nothing */
         }
     }
+
+    public void OnCollisionStay(Collision collision)
+    {
+        if(collision.collider.tag == "Wall")
+        {
+            //isWall = true;
+            //gameObject.transform.position = collision.transform.position;
+        }
+    }
+
+
 }

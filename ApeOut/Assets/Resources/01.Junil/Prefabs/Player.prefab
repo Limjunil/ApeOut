@@ -329,12 +329,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3144458363831851124}
   - component: {fileID: 9026182238408655374}
-  - component: {fileID: 3548976575619127858}
   - component: {fileID: 2464473018101463377}
   - component: {fileID: 8647975777501350024}
   - component: {fileID: 5837542612107608362}
   - component: {fileID: 3554931051247385495}
   - component: {fileID: 4272361236638123005}
+  - component: {fileID: 1905884859719929746}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -380,19 +380,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &3548976575619127858
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2371299772461236942}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.6, z: 1.5}
-  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!54 &2464473018101463377
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -460,6 +447,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f72f7ce09db91b47b1bdf636a9a7f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &1905884859719929746
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371299772461236942}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 3.3
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.9, z: 0.2}
 --- !u!1 &2421079674089099156
 GameObject:
   m_ObjectHideFlags: 0

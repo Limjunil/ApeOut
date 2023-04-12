@@ -40,6 +40,17 @@ public class PlayerInput : MonoBehaviour
         isAttack = Input.GetMouseButtonDown(0);
         isGrab = Input.GetMouseButton(1);
 
+        if (Input.anyKeyDown)
+        {
+            var mousPosTest_ = Input.mousePosition;
+
+            mousPosTest_.z = Camera.main.nearClipPlane + 7;
+
+            Vector3 mousePos_ = Camera.main.ScreenToWorldPoint(mousPosTest_);
+
+            //GFunc.Log($"{mousePos_}");
+        }
+
 
     }
 }
