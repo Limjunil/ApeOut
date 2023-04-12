@@ -7,6 +7,9 @@ Make a ApeOut Game Project
 ## [Junil]
 23/04/11 - Make CursorImg and Camera Move    
 23/04/11 - Make Player Move and Player Input    
+23/04/12 - Fix Camera perspective and Player Mouse Look    
+23/04/12 - Fix Camera Move to mouse postion    
+23/04/12 - Make Base Map    
 
 ## [YMG]
 04/11 - 기본세팅 On    
