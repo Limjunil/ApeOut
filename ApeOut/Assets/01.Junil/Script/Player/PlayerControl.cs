@@ -38,6 +38,8 @@ public class PlayerControl : MonoBehaviour
             playerAttack.OnAttack();
         }
 
+        //GFunc.Log($"카메라 스크린 월드 : {Camera.main.WorldToScreenPoint(Input.mousePosition)}");
+        //GFunc.Log($"플레이어 : {Camera.main.WorldToScreenPoint(gameObject.transform.position)}");
 
     }
 
@@ -60,40 +62,31 @@ public class PlayerControl : MonoBehaviour
     //! 곰이 마우스 커서 위치를 바라보는 함수
     public void LookMousePos()
     {
-        //Ray ray_ = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        //RaycastHit hitResult_;
-
-        //if(Physics.Raycast(ray_, out hitResult_))
-        //{
-        //    Vector3 len_ = hitResult_.transform.position - transform.position;
-
-        //    //Vector3 mouseDir_ = new Vector3(hitResult_.point.x,
-        //    //    transform.position.y,
-        //    //    hitResult_.point.z) - transform.position;
-
-        //    float lookY_ = Mathf.Atan2(len_.x, len_.z);
-
-        //    float rotateY_ = lookY_ * Mathf.Rad2Deg;
-
-        //    transform.rotation = Quaternion.Euler(0, rotateY_, 0);
-        //}
+        var mousPosTest_ = Input.mousePosition;
+        // 화면 상 좌표에 Z 값이 없기에, 월드 좌표로서의 Z 값을 정할 때 고려할 카메라와의 거리를 더해줘야 한다.
+        mousPosTest_.z = Camera.main.nearClipPlane + 7;
 
 
-        //Vector3 mousePos_ = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePos_ = Camera.main.ScreenToWorldPoint(mousPosTest_);
 
-        //// 마우스 커서 위치와 이 오브젝트의 위치를 뺀 값
-        //Vector3 len_ = mousePos_ - transform.position;
-
-        //float lookY_ = Mathf.Atan2(len_.x, len_.z);
-
-        //float rotateY_ = lookY_ * Mathf.Rad2Deg;
-
-        //transform.rotation = Quaternion.Euler(0, rotateY_, 0);
+        Vector3 playerPos_ = gameObject.transform.position;
 
 
-        //playerAnimator.SetFloat("inputX", len_.x);
-        //playerAnimator.SetFloat("inputZ", len_.z);
+        // 마우스 커서 위치와 이 오브젝트의 위치를 뺀 값
+        Vector3 len_ = mousePos_ - playerPos_;
+
+        float lookY_ = Mathf.Atan2(len_.x, len_.z);
+
+        float rotateY_ = lookY_ * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(0, rotateY_, 0);
+
+
+        playerAnimator.SetFloat("inputX", len_.x);
+        playerAnimator.SetFloat("inputZ", len_.z);
+
+
 
     }
 }

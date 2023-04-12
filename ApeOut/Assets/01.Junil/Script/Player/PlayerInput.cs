@@ -40,5 +40,6 @@ public class PlayerInput : MonoBehaviour
         isAttack = Input.GetMouseButtonDown(0);
         isGrab = Input.GetMouseButton(1);
 
+
     }
 }
