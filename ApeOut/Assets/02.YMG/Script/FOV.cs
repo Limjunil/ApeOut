@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class FOV : MonoBehaviour
+public class FOV : MonoBehaviour // 플레이어가 각도 내에 있으면 내비메쉬
 {
     public GameObject player;
     NavMeshAgent agent;
