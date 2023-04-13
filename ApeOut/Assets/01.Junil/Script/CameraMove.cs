@@ -11,11 +11,18 @@ public class CameraMove : MonoBehaviour
     public float cameraWidth = default;
 
     public GameObject targetPlayer = default;
+    
+    // 카메라가 현재 잡고 있는 타겟
+    public Vector3 nowTarget = default;
+
+    public Vector3 offset = default;
+
 
     // 예외 거리 값
     public float exceptionRangeVal = default;
 
     public bool isWall = false;
+
 
 
     // Start is called before the first frame update
@@ -24,9 +31,12 @@ public class CameraMove : MonoBehaviour
         cameraHeight = Camera.main.orthographicSize;
         cameraWidth = cameraHeight * Screen.width / Screen.height;
 
-        exceptionRangeVal = 1f;
+        exceptionRangeVal = 0.4f;
+
+        offset = new Vector3(0f, 8f, 0f);
 
         isWall = false;
+        nowTarget = default;
 
         GetTargetPlayer();
     }
@@ -37,10 +47,30 @@ public class CameraMove : MonoBehaviour
     {
         //if(isWall == true) { return; }
 
-        //gameObject.transform.position = targetPlayer.transform.position + offset;
+        gameObject.transform.position = targetPlayer.transform.position + offset;
 
+        //CameraMoveOne();
+    }
+
+
+    public void GetTargetPlayer()
+    {
+
+        if (targetPlayer == null || targetPlayer == default)
+        {
+            targetPlayer = GameObject.Find("Player");
+        }
+        else
+        {
+            /* Do Nothing */
+        }
+    }
+
+
+    public void CameraMoveOne()
+    {
         var mousPosTest_ = Input.mousePosition;
-        
+
         mousPosTest_.z = Camera.main.nearClipPlane + 7;
 
         Vector3 mousePos_ = Camera.main.ScreenToWorldPoint(mousPosTest_);
@@ -61,44 +91,38 @@ public class CameraMove : MonoBehaviour
         Vector3 testCamera_ = new Vector3(clampMinX, 8f, clampMinZ);
         Vector3 targetCameraPos_ = new Vector3(targetPos_.x, 8f, targetPos_.z);
 
-        gameObject.transform.position = Vector3.Lerp(transform.position, testCamera_, SPEED_CAMERA * Time.deltaTime);
 
         // 예외 범위를 지정하여 카메라 위치를 잡는 조건
         if ((targetPos_.x - (cameraWidth * exceptionRangeVal) <= clampMinX && clampMinX <= targetPos_.x + (cameraWidth * exceptionRangeVal)) &&
             (targetPos_.z - (cameraHeight * exceptionRangeVal) <= clampMinZ && clampMinZ <= targetPos_.z + (cameraHeight * exceptionRangeVal)))
         {
-            // 부드러운 움직임을 위해서 Vector3.Lerp 사용
-            gameObject.transform.position = Vector3.Lerp(transform.position, targetCameraPos_, SPEED_CAMERA * Time.deltaTime);
+            nowTarget = targetCameraPos_;
+            //gameObject.transform.position = Vector3.Lerp(transform.position, targetCameraPos_, SPEED_CAMERA * Time.deltaTime);
+
         }   // if : 예외 범위일 때는 플레이어 위치를 잡는 조건
         else
         {
-            gameObject.transform.position = Vector3.Lerp(transform.position, testCamera_, SPEED_CAMERA * Time.deltaTime);
+            nowTarget = testCamera_;
+            //gameObject.transform.position = Vector3.Lerp(transform.position, testCamera_, SPEED_CAMERA * Time.deltaTime);
 
         }   // else : 그 외는 마우스 위치를 잡는 조건
+
+        //GFunc.Log($"{nowTarget}");
+        // 부드러운 움직임을 위해서 Vector3.Lerp 사용
+        gameObject.transform.position = Vector3.Lerp(transform.position, nowTarget, SPEED_CAMERA * Time.deltaTime);
+
     }
 
+    //public void OnCollisionStay(Collision collision)
+    //{
+    //    if(collision.collider.tag == "Wall")
+    //    {
+    //        //isWall = true;
+    //        GFunc.Log($"{collision.transform.position}");
 
-    public void GetTargetPlayer()
-    {
-
-        if (targetPlayer == null || targetPlayer == default)
-        {
-            targetPlayer = GameObject.Find("Player");
-        }
-        else
-        {
-            /* Do Nothing */
-        }
-    }
-
-    public void OnCollisionStay(Collision collision)
-    {
-        if(collision.collider.tag == "Wall")
-        {
-            //isWall = true;
-            //gameObject.transform.position = collision.transform.position;
-        }
-    }
+    //        //gameObject.transform.position = collision.transform.position;
+    //    }
+    //}
 
 
 }

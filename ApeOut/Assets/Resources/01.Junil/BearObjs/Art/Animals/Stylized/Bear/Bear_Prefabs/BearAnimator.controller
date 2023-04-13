@@ -88,7 +88,7 @@ AnimatorStateMachine:
     m_Position: {x: 30, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9117132995212053736}
-    m_Position: {x: 760, y: 150, z: 0}
+    m_Position: {x: 890, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2446633916303521730}
     m_Position: {x: 250, y: -140, z: 0}
@@ -136,10 +136,10 @@ AnimatorStateMachine:
     m_Position: {x: 520, y: 1160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2084242385974158102}
-    m_Position: {x: 780, y: 250, z: 0}
+    m_Position: {x: 910, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1964440992214109613}
-    m_Position: {x: 540, y: 230, z: 0}
+    m_Position: {x: 940, y: 120, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -1015862310407708421}
@@ -500,6 +500,28 @@ AnimatorStateTransition:
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &-761652897191198153
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 9117132995212053736}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.7794118
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -969,7 +991,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 0
@@ -987,7 +1009,8 @@ AnimatorState:
   m_Name: Bear_Attack1
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
+  m_Transitions:
+  - {fileID: -761652897191198153}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0

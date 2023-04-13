@@ -20,12 +20,17 @@ public class PlayerInput : MonoBehaviour
     public bool isGrab { get; private set; }
     // } [Junil] 플레이어의 공격과 잡기 버튼 입력 정보들
 
+    //public float cameraMoveX { get; private set; }
+    //public float cameraMoveZ { get; private set; }
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        moveX = 0;
-        moveZ = 0;
+        moveX = 0f;
+        moveZ = 0f;
+
 
         isAttack = false;
         isGrab = false;
@@ -40,13 +45,13 @@ public class PlayerInput : MonoBehaviour
         isAttack = Input.GetMouseButtonDown(0);
         isGrab = Input.GetMouseButton(1);
 
+        
+
+
         if (Input.anyKeyDown)
         {
-            var mousPosTest_ = Input.mousePosition;
-
-            mousPosTest_.z = Camera.main.nearClipPlane + 7;
-
-            Vector3 mousePos_ = Camera.main.ScreenToWorldPoint(mousPosTest_);
+            
+            //GFunc.Log($"{cameraMoveX}, {cameraMoveZ}");
 
             //GFunc.Log($"{mousePos_}");
         }

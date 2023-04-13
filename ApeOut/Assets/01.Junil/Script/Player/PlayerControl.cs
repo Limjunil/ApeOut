@@ -9,12 +9,17 @@ public class PlayerControl : MonoBehaviour
     private PlayerInput playerInput = default;
     private PlayerAttack playerAttack = default;
 
+
     private void Awake()
     {
+        // 플레이어 싱글톤 호출
+        PlayerManager.Instance.player = this;
+
         playerMove = gameObject.GetComponent<PlayerMovement>();
         playerAnimator = gameObject.GetComponent<Animator>();
         playerInput = gameObject.GetComponent<PlayerInput>();
         playerAttack = gameObject.GetComponent<PlayerAttack>();
+
 
         playerAnimator.SetTrigger("OnIdle");
     }
@@ -35,9 +40,12 @@ public class PlayerControl : MonoBehaviour
 
         if (playerInput.isAttack)
         {
-            playerAttack.OnAttack();
+            if (playerAttack.isAttack == false)
+            {
+                playerAttack.OnAttack();
+                playerAnimator.SetTrigger("Attack1");
+            }
         }
-
         //GFunc.Log($"카메라 스크린 월드 : {Camera.main.WorldToScreenPoint(Input.mousePosition)}");
         //GFunc.Log($"플레이어 : {Camera.main.WorldToScreenPoint(gameObject.transform.position)}");
 

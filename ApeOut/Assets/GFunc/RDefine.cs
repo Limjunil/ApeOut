@@ -9,6 +9,11 @@ public static class RDefine
 
     public const string OBSTACLE_PREF_PLAIN_CASTLE = "Obstacle_PlainCastle";
 
+    public const string ENEMY_TAG = "Enemy";
+    public const string PLAYER_TAG = "Player";
+
+
+
     public enum TileStatusColor
     {
         DEFAULT, SELECTED, SEARCH, INACTIVE
