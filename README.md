@@ -24,4 +24,5 @@ component를 정의하지 않음
 애니메이터 변수 선언만 해놓고 component를 가져오지 않아서 생김    
 GetComponent<Animator>() 를 해주니 해결    
 시야 범위 Gizmos 비주얼    
+
   
