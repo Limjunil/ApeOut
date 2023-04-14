@@ -34,5 +34,7 @@ Gizmos.DrawRay(transform.position, (Target.position - transform.position).normal
 Target을 태그를 찾는 형식으로 했는데 플레이 전에 NullReferenceException 오류 나옴    
 해결    
 if (Target != null)    
-
+    
+04/14    
+일반형 기초 완성  
 
