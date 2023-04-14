@@ -13,11 +13,20 @@ public class PlayerAtkCol : MonoBehaviour
         // 적이 충돌한 경우 발동하는 조건
         if(other.tag == RDefine.ENEMY_TAG)
         {
-            GFunc.Log("적 맞았음!");
+            if(PlayerManager.Instance.player.playerAttack.isAttackChk == true)
+            {
+                GFunc.Log("적 맞았음!");
 
-            Rigidbody tempEnemyRigid_ = other.gameObject.GetComponent<Rigidbody>();
+                Rigidbody tempEnemyRigid_ = other.gameObject.GetComponent<Rigidbody>();
 
-            tempEnemyRigid_.AddForce(transform.forward * PUNCH_FORCE, ForceMode.Impulse);
+                tempEnemyRigid_.AddForce(transform.forward * PUNCH_FORCE, ForceMode.Impulse);
+            }
+
+            if(PlayerManager.Instance.player.playerAttack.isGrabChk == true)
+            {
+                GFunc.Log("적 잡았음!");
+                
+            }
         }
     }
 }

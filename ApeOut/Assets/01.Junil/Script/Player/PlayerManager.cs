@@ -6,6 +6,7 @@ public class PlayerManager : GSingleton<PlayerManager>
 {
 
     public PlayerControl player = default;
+    public CameraMove mainCamera = default;
 
 
 }

@@ -8,14 +8,19 @@ public class PlayerAttack : MonoBehaviour
     public BoxCollider attackCollider = default;
 
     // 공격 중인지 확인하는 bool 값
-    public bool isAttack = false;
+    public bool isAttackChk = false;
+
+    // 잡고 있는 중인지 확인하는 bool 값
+    public bool isGrabChk = false;
 
     private void Awake()
     {
         attackCollider = gameObject.transform.GetChild(2).gameObject.GetComponent<BoxCollider>();
 
         attackCollider.enabled = false;
-        isAttack = false;
+
+        isAttackChk = false;
+        isGrabChk = false;
     }
 
 
@@ -27,10 +32,26 @@ public class PlayerAttack : MonoBehaviour
         StartCoroutine(OnOffAtkCol());
     }
 
+    //! 플레이어가 적을 잡는 함수
+    public void OnHold()
+    {
+        StartCoroutine(OnOffHoldCol());
+        // 적 스크립트 안에 bool 값을 true로 변경 한다.
+    }
+
+    //! 플레이어가 적을 놓아주는 함수
+    public void OffHold()
+    {
+        isGrabChk = false;
+        GFunc.Log("적 놓았음!");
+
+        // 적 스크립트 안에 bool 값을 false로 변경 한다.
+    }
+
     // 공격할 때 일정 시간 후 공격 콜라이더를 켰다가 끄는 코루틴
     IEnumerator OnOffAtkCol()
     {
-        isAttack = true;
+        isAttackChk = true;
 
         yield return new WaitForSeconds(0.3f);
 
@@ -42,8 +63,28 @@ public class PlayerAttack : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
-        isAttack = false;
+        isAttackChk = false;
 
 
     }
+
+    // 공격할 때 일정 시간 후 공격 콜라이더를 켰다가 끄는 코루틴
+    IEnumerator OnOffHoldCol()
+    {
+        isGrabChk = true;
+
+        yield return new WaitForSeconds(0.3f);
+
+        attackCollider.enabled = true;
+
+        yield return new WaitForSeconds(0.1f);
+
+        attackCollider.enabled = false;
+
+
+
+    }
+
+
+
 }

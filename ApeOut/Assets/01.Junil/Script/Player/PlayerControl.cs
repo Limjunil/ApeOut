@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    private PlayerMovement playerMove = default;
-    private Animator playerAnimator = default;
-    private PlayerInput playerInput = default;
-    private PlayerAttack playerAttack = default;
+    public PlayerMovement playerMove = default;
+    public Animator playerAnimator = default;
+    public PlayerInput playerInput = default;
+    public PlayerAttack playerAttack = default;
 
+    public GameObject holdEnemyPos = default;
+
+    public bool isFirstHold = false;
 
     private void Awake()
     {
@@ -19,7 +22,9 @@ public class PlayerControl : MonoBehaviour
         playerAnimator = gameObject.GetComponent<Animator>();
         playerInput = gameObject.GetComponent<PlayerInput>();
         playerAttack = gameObject.GetComponent<PlayerAttack>();
+        holdEnemyPos = gameObject.transform.GetChild(3).gameObject;
 
+        isFirstHold = false;
 
         playerAnimator.SetTrigger("OnIdle");
     }
@@ -38,12 +43,39 @@ public class PlayerControl : MonoBehaviour
 
         PlayerOnMove(playerInput.moveX, playerInput.moveZ);
 
-        if (playerInput.isAttack)
+        if (playerInput.isAttack == true)
         {
-            if (playerAttack.isAttack == false)
+            if (playerAttack.isAttackChk == false)
             {
+                if(playerAttack.isGrabChk == true)
+                {
+                    playerAttack.OffHold();
+                }
+
                 playerAttack.OnAttack();
                 playerAnimator.SetTrigger("Attack1");
+            }
+        }
+
+
+        if(playerInput.isGrab == true)
+        {
+
+            if (playerAttack.isGrabChk == false && isFirstHold == false)
+            {
+                playerAttack.OnHold();
+                
+            }
+
+            isFirstHold = true;
+        }
+        else if(playerInput.isGrab == false)
+        {
+            isFirstHold = false;
+
+            if(playerAttack.isGrabChk == true)
+            {
+                playerAttack.OffHold();
             }
         }
         //GFunc.Log($"카메라 스크린 월드 : {Camera.main.WorldToScreenPoint(Input.mousePosition)}");
