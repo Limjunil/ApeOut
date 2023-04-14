@@ -919,7 +919,7 @@ GameObject:
   - component: {fileID: 846024549}
   m_Layer: 10
   m_Name: Obstacle
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1016,7 +1016,7 @@ GameObject:
   - component: {fileID: 879141266}
   m_Layer: 10
   m_Name: Obstacle (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1304,7 +1304,7 @@ GameObject:
   - component: {fileID: 1071591444}
   m_Layer: 10
   m_Name: Obstacle (4)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1401,7 +1401,7 @@ GameObject:
   - component: {fileID: 1146427677}
   m_Layer: 10
   m_Name: Obstacle (5)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1684,7 +1684,7 @@ GameObject:
   - component: {fileID: 1634585029}
   m_Layer: 10
   m_Name: Obstacle (7)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1781,7 +1781,7 @@ GameObject:
   - component: {fileID: 1657791148}
   m_Layer: 10
   m_Name: Obstacle (6)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1877,7 +1877,7 @@ GameObject:
   - component: {fileID: 1729774862}
   - component: {fileID: 1729774861}
   - component: {fileID: 1729774864}
-  - component: {fileID: 1729774863}
+  - component: {fileID: 1729774865}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -1952,37 +1952,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 2, z: 0}
---- !u!114 &1729774863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729774854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6608ae6a769ca04e8f000a09501bbe1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  ObstacleMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  viewAngle: 90
-  maxAngle: 45
-  maxRadius: 10
-  AttackAnime: {fileID: 7400000, guid: 7e58f38d10fcc9a498d348e7339ce3ec, type: 3}
-  bulletPrefab: {fileID: 8739789450037562942, guid: 4099f54c9324e5d47b38d787234f99ed,
-    type: 3}
-  spawnPoint: {fileID: 525184537}
-  lookRange: 3
-  attackRange: 7
-  speed: 3
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!95 &1729774864
 Animator:
   serializedVersion: 5
@@ -2004,6 +1976,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1729774865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729774854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 291ff49897b8dbc4888066d2b896ca81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  ObstacleMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  viewAngle: 90
+  maxAngle: 45
+  maxRadius: 10
+  AttackAnime: {fileID: 7400000, guid: 7e58f38d10fcc9a498d348e7339ce3ec, type: 3}
+  bulletPrefab: {fileID: 8739789450037562942, guid: 4099f54c9324e5d47b38d787234f99ed,
+    type: 3}
+  spawnPoint: {fileID: 525184537}
+  lookRange: 3
+  attackRange: 7
+  enemySpeed: 3
 --- !u!1 &1790750366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2273,7 +2273,7 @@ GameObject:
   - component: {fileID: 1962190402}
   m_Layer: 10
   m_Name: Obstacle (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2370,7 +2370,7 @@ GameObject:
   - component: {fileID: 2093626971}
   m_Layer: 10
   m_Name: Obstacle (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
