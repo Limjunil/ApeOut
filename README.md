@@ -10,6 +10,8 @@ Make a ApeOut Game Project
 23/04/12 - Fix Camera perspective and Player Mouse Look    
 23/04/12 - Fix Camera Move to mouse postion    
 23/04/12 - Make Base Map    
+23/04/13 - Make Player Attack and Camera Test    
+23/04/14 - Make player Grab and Proto TitleScene    
 
 
 ## [YMG]
@@ -26,4 +28,16 @@ component를 정의하지 않음
 GetComponent<Animator>() 를 해주니 해결    
 시야 범위 Gizmos 비주얼    
 
-  
+04/13    
+OnDrawGizmos() 오류
+Gizmos.DrawRay(transform.position, (Target.position - transform.position).normalized * maxRadius);    
+Target을 태그를 찾는 형식으로 했는데 플레이 전에 NullReferenceException 오류 나옴    
+해결    
+if (Target != null)    
+    
+04/14    
+일반형 기초 완성  
+
+04/17
+
+
