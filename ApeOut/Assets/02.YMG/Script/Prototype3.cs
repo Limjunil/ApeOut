@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class Prototype3 : MonoBehaviour
 {
+    public GameObject explosionEffect;
+    bool hasExploded = false;
+
     Transform Target;
     NavMeshAgent Agent;
 
@@ -221,10 +224,18 @@ public class Prototype3 : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision) // Death
     {
         if (collision.collider.CompareTag("Wall")) 
         {
+            // Explosion
+            if (!hasExploded) 
+            {
+                Instantiate(explosionEffect, transform.position, transform.rotation);
+                hasExploded = true;
+            }
+
+            // Object
             Agent.enabled = false;
             gameObject.SetActive(false);
         }
