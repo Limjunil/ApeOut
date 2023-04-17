@@ -114,5 +114,8 @@ public class EnemyAiTutorial : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
+
+
+
 }
 
