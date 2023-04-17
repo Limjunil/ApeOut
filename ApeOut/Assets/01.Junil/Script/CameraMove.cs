@@ -57,7 +57,7 @@ public class CameraMove : MonoBehaviour
     private void LateUpdate()
     {
 
-        GFunc.Log($"{isWallChk}");
+        // GFunc.Log($"{isWallChk}");
 
         //if(isWallChk == true) { return; }
 

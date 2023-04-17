@@ -8,6 +8,9 @@ public class PlayerCall : MonoBehaviour
     void Start()
     {
         PlayerManager.Instance.Create();
+        // pauseUI 싱글톤 호출
+        PauseUIControl.Instance.Create();
+        UIManager.Instance.Create();
     }
 
     

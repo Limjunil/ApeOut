@@ -21,7 +21,7 @@ public class PlayerChkWall : MonoBehaviour
 
     private void Update()
     {
-        GFunc.Log($"{collCnt}");
+        //GFunc.Log($"{collCnt}");
         deleyTime += Time.deltaTime;
     }
 

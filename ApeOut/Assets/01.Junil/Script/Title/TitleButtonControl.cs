@@ -13,12 +13,6 @@ public class TitleButtonControl : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     // 마우스가 버튼에 올라오면 발동
     public void OnMouseButton()
     {
