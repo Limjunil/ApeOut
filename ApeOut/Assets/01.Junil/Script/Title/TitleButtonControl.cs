@@ -13,17 +13,37 @@ public class TitleButtonControl : MonoBehaviour
     }
 
 
-    // 마우스가 버튼에 올라오면 발동
+    //! 마우스가 버튼에 올라오면 발동
     public void OnMouseButton()
     {
         selectButton.SetActive(true);
 
     }
 
-    // 마우스가 버튼을 벗어나면 발동
+    //! 마우스가 버튼을 벗어나면 발동
     public void OffMouseButton()
     {
         selectButton.SetActive(false);
 
     }
+
+
+    //! 게임 시작 버튼을 누르면 발동
+    public void OnGamePlay()
+    {
+        UIManager.Instance.ChangeTitleToAlbum();
+    }
+
+    //! 옵션 버튼을 누르면 발동
+    public void OnOpiton()
+    {
+        GFunc.Log("옵션 버튼 눌림");
+    }
+
+    //! 게임 종료를 누르면 발동
+    public void ExitGame()
+    {
+        GFunc.QuitThisGame();
+    }
+
 }

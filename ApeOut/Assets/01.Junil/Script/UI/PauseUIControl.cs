@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseUIControl : GSingleton<PauseUIControl>
 {
@@ -12,10 +13,24 @@ public class PauseUIControl : GSingleton<PauseUIControl>
 
     public TMP_Text[] gameUITxt = new TMP_Text[PAUSE_MENU_CNT];
 
-    protected override void Init()
-    {
-        base.Init();
+    
 
+    public override void Awake()
+    {
+        base.Awake();
+
+        Scene sceneName_ = SceneManager.GetActiveScene();
+
+        if(sceneName_.name == "JunilTestScene")
+        {
+            SetUpPauseUI();
+        }
+        
+    }
+
+
+    public void SetUpPauseUI()
+    {
         GameObject gameUIObj_ = GFunc.GetRootObj("GameUIView");
 
         pauseUIObj = gameUIObj_.transform.GetChild(0).gameObject;
@@ -23,7 +38,7 @@ public class PauseUIControl : GSingleton<PauseUIControl>
         GameObject pauseUITxt_ = pauseUIObj.transform.GetChild(1).gameObject;
 
 
-        for(int i = 0; i < PAUSE_MENU_CNT; i++)
+        for (int i = 0; i < PAUSE_MENU_CNT; i++)
         {
             gameUITxt[i] = pauseUITxt_.transform.GetChild(i).gameObject.GetComponent<TMP_Text>();
         }
