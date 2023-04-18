@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Prototype3 : MonoBehaviour
+public class EnemyBase : MonoBehaviour
 {
+
     public GameObject explosionEffect;
     bool hasExploded = false;
 
-    Transform Target;
-    NavMeshAgent Agent;
+    public int enemyHp = default;
+    public int enemyAtk = default;
+
+    public Transform Target;
+    public NavMeshAgent Agent;
 
     public LayerMask PlayerMask;
     public LayerMask ObstacleMask;
@@ -18,24 +22,25 @@ public class Prototype3 : MonoBehaviour
     public float maxAngle; // 범위 기즈모
     public float maxRadius; // 감지 거리
 
-    private bool isInFOV = false;
-    private bool isAim = false;
-    private bool isEnemy = false;
+    public bool isInFOV = false;
+    public bool isAim = false;
+    public bool isEnemy = false;
 
     //
 
-    Animator Anim;
+    public Animator Anim;
     public AnimationClip AttackAnime;
     public GameObject bulletPrefab;
     public Transform spawnPoint;
 
-    private float timeAfterSpawn; // 최근 생성 시점에서 지난 시간
+    public float timeAfterSpawn; // 최근 생성 시점에서 지난 시간
     public float lookRange = default; // 감지 거리
     public float attackRange = default; // 공격 거리
     public float enemySpeed = 3;
-    private float spawnRate;
+    public float spawnRate;
 
-    enum State
+
+    public enum State
     {
         Guard,
         Action,
@@ -43,51 +48,18 @@ public class Prototype3 : MonoBehaviour
         Move
     }
 
-    State state;
+    public State state;
 
-    void Awake()
+    protected virtual void Awake()
     {
+        //부모에서 작동할 내용
         Agent = GetComponent<NavMeshAgent>();
         Anim = GetComponent<Animator>();
-    }
-
-    void Start()
-    {
         Target = GameObject.FindGameObjectWithTag("Player").transform;
-        
-        // 각자 적들이 상속
-        spawnRate = AttackAnime.length;
-        //state = State.Guard;
-    }
-
-    private void Update()
-    {
-        isInFOV = InFOV(transform, Target, maxAngle, maxRadius);
-
-        if (state == State.Guard)
-        {
-            Debug.Log("경계 상태");
-            Guard();
-        }
-        else if (state == State.Action)
-        {
-            Debug.Log("행동 상태");
-            Range();
-        }
-        else if (state == State.Engage)
-        {
-            Debug.Log("공격 상태");
-            Engage();
-        }
-        else if (state == State.Move)
-        {
-            Debug.Log("이동 상태");
-            Move();
-        }
 
     }
 
-    void Move() //! 시야 밖 상태
+    public virtual void Move() //! 시야 밖 상태
     {
         float distance = Vector3.Distance(transform.position, Target.transform.position);
         Debug.Log($"Move() {Agent.speed}");
@@ -110,7 +82,7 @@ public class Prototype3 : MonoBehaviour
 
     }
 
-    void Range() //! 시야 범위 안 내비메시
+    public virtual void Range() //! 시야 범위 안 내비메시
     {
         isAim = false;
 
@@ -124,7 +96,7 @@ public class Prototype3 : MonoBehaviour
         float distanceToTarget = Vector3.Distance(transform.position, Target.transform.position);
 
         // 두 벡터 사이의 각도가 viewAngle / 2 보다 작을 때
-        if (Vector3.Angle(transform.forward, playerTarget) < viewAngle / 2) 
+        if (Vector3.Angle(transform.forward, playerTarget) < viewAngle / 2)
         {
             if (distanceToTarget <= maxRadius)
             {
@@ -135,7 +107,7 @@ public class Prototype3 : MonoBehaviour
                     Anim.SetTrigger("MoveTrg");
 
                     isEnemy = true;
-                    
+
                 }
             }
         }
@@ -148,7 +120,7 @@ public class Prototype3 : MonoBehaviour
             isAim = true;
         }
 
-        if (isEnemy == true) 
+        if (isEnemy == true)
         {
             if (distanceToTarget >= maxRadius)
             {
@@ -158,7 +130,7 @@ public class Prototype3 : MonoBehaviour
 
     }
 
-    void Engage() //! 공격 상태
+    public virtual void Engage() //! 공격 상태
     {
         Debug.Log($"Engage() {isAim}");
         Agent.speed = 0;
@@ -180,7 +152,7 @@ public class Prototype3 : MonoBehaviour
 
     }
 
-    void Guard() //! 경계
+    public virtual void Guard() //! 경계
     {
         isAim = false;
 
@@ -228,10 +200,10 @@ public class Prototype3 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) // Death
     {
-        if (collision.collider.CompareTag("Wall")) 
+        if (collision.collider.CompareTag("Wall"))
         {
             // Explosion
-            if (!hasExploded) 
+            if (!hasExploded)
             {
                 Instantiate(explosionEffect, transform.position, transform.rotation);
                 hasExploded = true;
@@ -243,7 +215,7 @@ public class Prototype3 : MonoBehaviour
         }
     }
 
-    void FaceTarget() //! 바라보는 기능
+    public virtual void FaceTarget() //! 바라보는 기능
     {
         // direction to the target
         Vector3 direction = (Target.position - transform.position).normalized;
@@ -254,26 +226,17 @@ public class Prototype3 : MonoBehaviour
 
     }
 
-    void Shot() //! 공격 기능
+    public virtual void Shot() //! 공격 기능
     {
 
         // timeAfterSpawn 갱신
         timeAfterSpawn += Time.deltaTime;
 
-        // 최근 생성 시점에서부터 누적된 시간이 생성 주기보다 크거나 같다면
-        if (timeAfterSpawn >= spawnRate)
-        {
-            // 누적된 시간을 리셋
-            timeAfterSpawn = 0f;
-            GameObject bullet = Instantiate(bulletPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
-            bullet.transform.LookAt(Target);
-            spawnRate = AttackAnime.length;
-        }
 
     }
 
 
-    private void OnDrawGizmos() //! 기즈모
+    public virtual void OnDrawGizmos() //! 기즈모
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, maxRadius);
@@ -311,40 +274,6 @@ public class Prototype3 : MonoBehaviour
 
     }
 
-    public static bool InFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius) //! 기즈모 레이
-    {
-        Collider[] overlaps = new Collider[20];
-        // Overlap중첩 Sphere구면 Non Allocate비 할당
-        int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
-
-        for (int i = 0; i < count + 1; i++)
-        {
-            if (overlaps[i] != null)
-            {
-                if (overlaps[i].transform == target)
-                {
-                    Vector3 directionBetween = (target.position - checkingObject.position).normalized;
-                    directionBetween.y *= 0;
-
-                    float angle = Vector3.Angle(checkingObject.forward, directionBetween);
-
-                    if (angle <= maxAngle)
-                    {
-                        Ray ray = new Ray(checkingObject.position, target.position - checkingObject.position);
-                        RaycastHit hit;
-
-                        if (Physics.Raycast(ray, out hit, maxRadius))
-                        {
-                            if (hit.transform == target)
-                                return true;
-                        }
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
 
 
 }
