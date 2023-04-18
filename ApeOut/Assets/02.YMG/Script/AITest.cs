@@ -19,22 +19,22 @@ public class AITest : EnemyBase
 
         if (state == State.Guard)
         {
-            Debug.Log("경계 상태");
+            //Debug.Log("경계 상태");
             Guard();
         }
         else if (state == State.Action)
         {
-            Debug.Log("행동 상태");
+            //Debug.Log("행동 상태");
             Range();
         }
         else if (state == State.Engage)
         {
-            Debug.Log("공격 상태");
+            //Debug.Log("공격 상태");
             Engage();
         }
         else if (state == State.Move)
         {
-            Debug.Log("이동 상태");
+            //Debug.Log("이동 상태");
             Move();
         }
 

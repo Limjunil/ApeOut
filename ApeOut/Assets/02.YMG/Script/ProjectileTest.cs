@@ -20,7 +20,7 @@ public class ProjectileTest : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Hit");
+            //Debug.Log("Hit");
         }
     }
 }

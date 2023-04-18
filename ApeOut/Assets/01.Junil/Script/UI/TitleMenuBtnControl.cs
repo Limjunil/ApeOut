@@ -37,5 +37,6 @@ public class TitleMenuBtnControl : MonoBehaviour
     public void StartStageOne()
     {
         // 스테이지 1 로드할 씬 여기에 넣기
+        GFunc.LoadScene(RDefine.PLAY_SCENE);
     }
 }

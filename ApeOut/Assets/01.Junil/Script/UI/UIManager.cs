@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEngine.Rendering.DebugUI;
 
 public class UIManager : GSingleton<UIManager>
 {
@@ -21,32 +20,24 @@ public class UIManager : GSingleton<UIManager>
     protected override void Init()
     {
         base.Init();
-
-        isOpenPause = false;
-
-        isAlbum = false;
-               
-
-                
+       
     }
 
-    public override void Awake()
+    public override void Start()
     {
-        base.Awake();
+        base.Start();
 
-        sceneNameNow = SceneManager.GetActiveScene().name;
+        SceneManager.sceneLoaded += LoadedsceneEvent;
 
-        if (sceneNameNow == "JunilTestTitleScene")
-        {
-            GameObject gameUIObj_ = GFunc.GetRootObj("GameUIView");
 
-            for (int i = 0; i < 2; i++)
-            {
-                titleMenus[i] = gameUIObj_.transform.GetChild(i).gameObject;
-            }
-        }
+        Scene scene_ = SceneManager.GetActiveScene();
 
-        
+        OnUIManagerSet(scene_);
+    }
+
+    public void LoadedsceneEvent(Scene scene, LoadSceneMode load)
+    {
+        OnUIManagerSet(scene);
     }
 
 
@@ -58,7 +49,7 @@ public class UIManager : GSingleton<UIManager>
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             // 현재 씬이 타이틀
-            if (sceneNameNow == "JunilTestTitleScene")
+            if (sceneNameNow == RDefine.TITLE_SCENE)
             {
                 ChangeAlbumToTitle();
             }
@@ -71,6 +62,25 @@ public class UIManager : GSingleton<UIManager>
 
 
     }
+
+
+    public void OnUIManagerSet(Scene scene_)
+    {
+        isOpenPause = false;
+
+        isAlbum = false;
+
+        if (scene_.name == RDefine.TITLE_SCENE)
+        {
+            GameObject gameUIObj_ = GFunc.GetRootObj("GameUIView");
+
+            for (int i = 0; i < 2; i++)
+            {
+                titleMenus[i] = gameUIObj_.transform.GetChild(i).gameObject;
+            }
+        }
+    }
+
 
 
     //! 타이틀에서 앨범으로 움직이는 함수

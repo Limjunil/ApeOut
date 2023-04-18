@@ -13,19 +13,26 @@ public class PauseUIControl : GSingleton<PauseUIControl>
 
     public TMP_Text[] gameUITxt = new TMP_Text[PAUSE_MENU_CNT];
 
+
+    //[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     
-
-    public override void Awake()
+    public override void Start()
     {
-        base.Awake();
+        base.Start();
 
-        Scene sceneName_ = SceneManager.GetActiveScene();
+        SceneManager.sceneLoaded += LoadedsceneEvent;
 
-        if(sceneName_.name == "JunilTestScene")
+    }
+
+    public void LoadedsceneEvent(Scene scene_, LoadSceneMode load)
+    {
+        //string sceneName_ = SceneManager.GetActiveScene().name;
+        GFunc.Log("일시정지 호출됨");
+
+        if (scene_.name == RDefine.PLAY_SCENE)
         {
             SetUpPauseUI();
         }
-        
     }
 
 

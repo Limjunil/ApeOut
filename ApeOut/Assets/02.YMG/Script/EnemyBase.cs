@@ -62,12 +62,12 @@ public class EnemyBase : MonoBehaviour
     public virtual void Move() //! 시야 밖 상태
     {
         float distance = Vector3.Distance(transform.position, Target.transform.position);
-        Debug.Log($"Move() {Agent.speed}");
+        //Debug.Log($"Move() {Agent.speed}");
 
         if (isEnemy == true)
         {
             isAim = false;
-            Debug.Log($"Move() == true {Agent.speed}");
+            //Debug.Log($"Move() == true {Agent.speed}");
             Agent.speed = enemySpeed;
 
             Agent.SetDestination(Target.position);
@@ -88,7 +88,7 @@ public class EnemyBase : MonoBehaviour
 
         Agent.speed = 0;
         Agent.SetDestination(Target.position);
-        Debug.Log($"Range() {Agent.speed}");
+        //Debug.Log($"Range() {Agent.speed}");
 
         Vector3 playerTarget = (Target.transform.position - transform.position).normalized;
 
@@ -103,7 +103,7 @@ public class EnemyBase : MonoBehaviour
                 if (Physics.Raycast(transform.position, playerTarget, distanceToTarget, ObstacleMask) == false)
                 {
                     Agent.speed = enemySpeed;
-                    Debug.Log($"Range() in angle {Agent.speed}");
+                    //Debug.Log($"Range() in angle {Agent.speed}");
                     Anim.SetTrigger("MoveTrg");
 
                     isEnemy = true;
@@ -132,7 +132,7 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void Engage() //! 공격 상태
     {
-        Debug.Log($"Engage() {isAim}");
+        //Debug.Log($"Engage() {isAim}");
         Agent.speed = 0;
 
         float distance = Vector3.Distance(transform.position, Target.transform.position);
@@ -158,7 +158,7 @@ public class EnemyBase : MonoBehaviour
 
         Agent.speed = 0;
         Agent.SetDestination(Target.position);
-        Debug.Log($"Guard() {Agent.speed}");
+        //Debug.Log($"Guard() {Agent.speed}");
 
         // 플레이어가 시야 밖 탐지거리에 들어오거나
         float distance = Vector3.Distance(transform.position, Target.transform.position);

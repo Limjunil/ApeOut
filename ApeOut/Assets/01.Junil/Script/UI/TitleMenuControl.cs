@@ -14,22 +14,32 @@ public class TitleMenuControl : GSingleton<TitleMenuControl>
 
 
 
-    public override void Awake()
+    public override void Start()
     {
-        base.Awake();
+        base.Start();
 
-        Scene sceneName_ = SceneManager.GetActiveScene();
+        SceneManager.sceneLoaded += LoadedsceneEvent;
 
-        if (sceneName_.name == "JunilTestTitleScene")
-        {
-            SetUpTitlemenu();
-        }
 
-        
+        Scene scene_ = SceneManager.GetActiveScene();
+
+        SetUpTitlemenu(scene_);
+
     }
 
-    public void SetUpTitlemenu()
+    public void LoadedsceneEvent(Scene scene_, LoadSceneMode load)
     {
+        SetUpTitlemenu(scene_);
+    }
+
+    public void SetUpTitlemenu(Scene scene_)
+    {
+
+        if (scene_.name != RDefine.TITLE_SCENE)
+        {
+            return;
+        }
+
         GameObject gameUIObj_ = GFunc.GetRootObj("GameUIView");
 
         titleMenuObj = gameUIObj_.transform.GetChild(1).gameObject;
