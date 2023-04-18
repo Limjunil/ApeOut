@@ -12,7 +12,7 @@ Make a ApeOut Game Project
 23/04/12 - Make Base Map    
 23/04/13 - Make Player Attack and Camera Test    
 23/04/14 - Make player Grab and Proto TitleScene    
-23/04/17    
+23/04/17 - Make PauseUI and UIManager    
 
 
 ## [YMG]
@@ -39,6 +39,16 @@ if (Target != null)
 04/14    
 일반형 기초 완성  
 
-04/17
+04/17    
+파티클 시스템 종료되지 않고 반복되는 오류    
+폭발하는 파티클 시스템 오브젝트를 사용하고 종료할 때    
+이펙트가 다 안꺼지고 반복되는 현상을 목격했다.    
 
+해결)    
+해결방안을 찾아본 결과 Stop Action 기능이 제대로 작동하지 않았다.    
+Stop Action은 파티클 시스템이 정지한 후의 행동을 설정하는데 이는 파티클 시스템이 현재 정지되지 않았음을 나타낸다.    
+정보를 찾아보니 이펙트 오브젝트가 여러개인 경우 모두 루프를 종료해야 Stop Action이 제대로 작동된다.    
+    
+04/18    
+몬스터 일반형 상속형 완성
 

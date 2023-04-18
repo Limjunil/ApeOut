@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class Prototype3 : MonoBehaviour
 {
+    public GameObject explosionEffect;
+    bool hasExploded = false;
+
     Transform Target;
     NavMeshAgent Agent;
 
@@ -51,11 +54,13 @@ public class Prototype3 : MonoBehaviour
     void Start()
     {
         Target = GameObject.FindGameObjectWithTag("Player").transform;
+        
+        // 각자 적들이 상속
         spawnRate = AttackAnime.length;
         //state = State.Guard;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         isInFOV = InFOV(transform, Target, maxAngle, maxRadius);
 
@@ -221,10 +226,18 @@ public class Prototype3 : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision) // Death
     {
         if (collision.collider.CompareTag("Wall")) 
         {
+            // Explosion
+            if (!hasExploded) 
+            {
+                Instantiate(explosionEffect, transform.position, transform.rotation);
+                hasExploded = true;
+            }
+
+            // Object
             Agent.enabled = false;
             gameObject.SetActive(false);
         }
@@ -300,7 +313,7 @@ public class Prototype3 : MonoBehaviour
 
     public static bool InFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius) //! 기즈모 레이
     {
-        Collider[] overlaps = new Collider[10];
+        Collider[] overlaps = new Collider[20];
         // Overlap중첩 Sphere구면 Non Allocate비 할당
         int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
 

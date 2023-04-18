@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float delay = 3f;
+    private float countdown;
+    private bool hasExploded = false;
+    
+    public GameObject explosionEffect;
+    public GameObject explosionArea;
+
     void Start()
     {
-        
+        countdown = delay;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        countdown -= Time.deltaTime;
+        if (countdown <= 0f && !hasExploded) 
+        {
+            Explode();
+            hasExploded = true;
+        }
+    }
+
+    void Explode() 
+    {
+        Debug.Log("BOOM");
+        Instantiate(explosionEffect, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
