@@ -2,48 +2,99 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestNote : MonoBehaviour
+public class TestNote : TestNote2
 {
 
-    enum State
-    {
-        Idle, // 대기하다가 최소 감지 범위안에 들어온 적을 본다
-        Move, // 시야 범위 안에서 감지된 적을 따라간다
-        Engage // 적이 공격 범위 안에 있으면 공격한다
-    }
 
-    enum State2 
+    protected override void Awake()
     {
-        Guard,
-        Action
-    }
+        base.Awake();
+        //자식에서 추가로 동작할 내용
 
-    State2 state2;
-
-    void Start()
-    {
-        
+        spawnRate = AttackAnime.length;
     }
 
     private void FixedUpdate()
     {
+        isInFOV = InFOV(transform, Target, maxAngle, maxRadius);
 
-        if (state2 == State2.Guard)
+        if (state == State.Guard)
         {
-            Debug.Log("대기 상태");
-
+            //Debug.Log("경계 상태");
+            Guard();
         }
-
-        else if (state2 == State2.Action)
+        else if (state == State.Action)
         {
-            Debug.Log("행동 상태");
-
+            //Debug.Log("행동 상태");
+            Range();
+        }
+        else if (state == State.Engage)
+        {
+            //Debug.Log("공격 상태");
+            Engage();
+        }
+        else if (state == State.Move)
+        {
+            //Debug.Log("이동 상태");
+            Move();
+        }
+        else if (state == State.Patrol) 
+        {
+            Patrol();
         }
 
     }
 
-    void Range() { } // 시야 범위 안 내비메시
-    void Guard() { } // 최소거리 안 이라면 감지하여 바라본다
-    void Engage() { } // 공격 상태 공격 거리를 벗어나면 이동상태
+
+    public override void Shot()
+    {
+        base.Shot();
+
+        // 최근 생성 시점에서부터 누적된 시간이 생성 주기보다 크거나 같다면
+        if (timeAfterSpawn >= spawnRate)
+        {
+            // 누적된 시간을 리셋
+            timeAfterSpawn = 0f;
+            GameObject bullet = Instantiate(bulletPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            bullet.transform.LookAt(Target);
+            spawnRate = AttackAnime.length;
+        }
+    }
+
+    public static bool InFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius) //! 기즈모 레이
+    {
+        Collider[] overlaps = new Collider[20];
+        // Overlap중첩 Sphere구면 Non Allocate비 할당
+        int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
+
+        for (int i = 0; i < count + 1; i++)
+        {
+            if (overlaps[i] != null)
+            {
+                if (overlaps[i].transform == target)
+                {
+                    Vector3 directionBetween = (target.position - checkingObject.position).normalized;
+                    directionBetween.y *= 0;
+
+                    float angle = Vector3.Angle(checkingObject.forward, directionBetween);
+
+                    if (angle <= maxAngle)
+                    {
+                        Ray ray = new Ray(checkingObject.position, target.position - checkingObject.position);
+                        RaycastHit hit;
+
+                        if (Physics.Raycast(ray, out hit, maxRadius))
+                        {
+                            if (hit.transform == target)
+                                return true;
+                        }
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
 
 }
