@@ -8,12 +8,23 @@ public class ProjectileTest : MonoBehaviour
     public float speed = 8f;
     private Rigidbody bulletRigidbody;
 
+    private void OnDisable()
+    {
+        StopBulletOff();
+        gameObject.SetActive(false);
+        
+    }
+
+    private void OnEnable()
+    {
+        StartBulletOff();
+    }
+
     void Start()
     {
         bulletRigidbody = GetComponent<Rigidbody>();
         bulletRigidbody.velocity = transform.forward * speed;
 
-        Destroy(gameObject, 3f);
     }
 
     void OnTriggerEnter(Collider other)
@@ -23,4 +34,30 @@ public class ProjectileTest : MonoBehaviour
             //Debug.Log("Hit");
         }
     }
+
+
+    // [Junil, YMG] 총알이 일정 시간 후 사라지는 코루틴
+    IEnumerator BulletOff = default;
+
+    public void StartBulletOff()
+    {
+        BulletOff = AutoBulletOff();
+        StartCoroutine(BulletOff);
+    }
+
+    public void StopBulletOff()
+    {
+        if(BulletOff != null)
+        {
+            StopCoroutine(BulletOff);
+        }
+    }
+
+
+    public IEnumerator AutoBulletOff()
+    {
+        yield return new WaitForSeconds(3f);
+        gameObject.SetActive(false);
+    }
+
 }

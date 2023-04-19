@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class AITest : EnemyBase
 {
+    public int enemyBulleyVal = 30;
+    public GameObject[] enemyBulletPack = default;
+
+    public int chkBullet = 0;
+
 
     public override void Awake()
     {
@@ -11,6 +16,17 @@ public class AITest : EnemyBase
         //자식에서 추가로 동작할 내용
 
         spawnRate = AttackAnime.length;
+        enemyBulleyVal = 30;
+        enemyBulletPack = new GameObject[enemyBulleyVal];
+        chkBullet = 0;
+
+        for (int i = 0; i < enemyBulleyVal; i++)
+        {
+            enemyBulletPack[i] = Instantiate(bulletPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+
+            enemyBulletPack[i].SetActive(false);
+        }
+
     }
 
     private void FixedUpdate()
@@ -54,9 +70,26 @@ public class AITest : EnemyBase
         {
             // 누적된 시간을 리셋
             timeAfterSpawn = 0f;
-            GameObject bullet = Instantiate(bulletPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
-            bullet.transform.LookAt(Target);
+            //GameObject bullet = Instantiate(bulletPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+
+
+            enemyBulletPack[chkBullet].transform.localPosition = spawnPoint.transform.position;
+
+            enemyBulletPack[chkBullet].transform.localRotation = spawnPoint.transform.rotation;
+
+
+            enemyBulletPack[chkBullet].transform.LookAt(Target);
+
+            enemyBulletPack[chkBullet].SetActive(true);
+
             spawnRate = AttackAnime.length;
+
+            chkBullet++;
+
+            if(enemyBulleyVal <= chkBullet)
+            {
+                chkBullet = 0;
+            }
         }
     }
 
