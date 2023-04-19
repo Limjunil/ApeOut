@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyBase : MonoBehaviour
+
+public class TestNote2 : MonoBehaviour
 {
+
     public Transform[] waypoints;
     // index for choosing them
     public int waypointIndex;
@@ -55,23 +58,22 @@ public class EnemyBase : MonoBehaviour
 
     public State state;
 
-    public virtual void Awake()
+    protected virtual void Awake()
     {
         //부모에서 작동할 내용
         Agent = GetComponent<NavMeshAgent>();
-        Anim = GetComponent<Animator>();
         Target = GameObject.FindGameObjectWithTag("Player").transform;
+
+    }
+
+    protected virtual void Start() 
+    {
+        Anim = GetComponent<Animator>();
         UpdateDestination();
     }
 
-    protected virtual void Start()
+    public virtual void Patrol() 
     {
-
-    }
-
-    public virtual void Patrol()
-    {
-            Anim.SetTrigger("MoveTrg");
         // if our distance to our target is less than one meter
         if (Vector3.Distance(transform.position, targetVector3) < 1)
         {
@@ -79,7 +81,7 @@ public class EnemyBase : MonoBehaviour
             UpdateDestination();
         }
 
-        if (isInFOV)
+        if (isInFOV) 
         {
             //Debug.Log($"Patrol{isInFOV}");
             state = State.Action;
@@ -297,6 +299,7 @@ public class EnemyBase : MonoBehaviour
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, lookRange);
+
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
 
@@ -312,11 +315,14 @@ public class EnemyBase : MonoBehaviour
         {
             // 플레이어와의 거리
             Gizmos.color = Color.red;
+            //Debug.Log($"{isInFOV}");
         }
         else
         {
             Gizmos.color = Color.green;
+            //Debug.Log($"{isInFOV}");
         }
+
         if (Target != null)
         {
             Gizmos.DrawRay(transform.position, (Target.position - transform.position).normalized * maxRadius);
@@ -327,7 +333,4 @@ public class EnemyBase : MonoBehaviour
         Gizmos.DrawRay(transform.position, transform.forward * maxRadius);
 
     }
-
-
-
 }

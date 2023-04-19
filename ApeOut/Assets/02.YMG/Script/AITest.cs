@@ -5,7 +5,7 @@ using UnityEngine;
 public class AITest : EnemyBase
 {
 
-    protected override void Awake()
+    public override void Awake()
     {
         base.Awake();
         //자식에서 추가로 동작할 내용
@@ -36,6 +36,10 @@ public class AITest : EnemyBase
         {
             //Debug.Log("이동 상태");
             Move();
+        }
+        else if (state == State.Patrol)
+        {
+            Patrol();
         }
 
     }

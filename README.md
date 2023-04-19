@@ -13,6 +13,8 @@ Make a ApeOut Game Project
 23/04/13 - Make Player Attack and Camera Test    
 23/04/14 - Make player Grab and Proto TitleScene    
 23/04/17 - Make PauseUI and UIManager    
+23/04/18 - First Team Build ok and Title Album UI making    
+23/04/19 -    
 
 
 ## [YMG]
@@ -50,5 +52,8 @@ Stop Action은 파티클 시스템이 정지한 후의 행동을 설정하는데
 정보를 찾아보니 이펙트 오브젝트가 여러개인 경우 모두 루프를 종료해야 Stop Action이 제대로 작동된다.    
     
 04/18    
-몬스터 일반형 상속형 완성
+몬스터 일반형 상속형 완성    
+
+04/19
+
 
