@@ -1,6 +1,9 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerControl : MonoBehaviour
 {
@@ -11,7 +14,17 @@ public class PlayerControl : MonoBehaviour
 
     public GameObject holdEnemyPos = default;
 
+    public Image playerHpbar = default;
+
     public bool isFirstHold = false;
+
+    // { [Junil] 플레이어 스탯
+    public int playerHpMax = default;
+
+    public int playerHp = default;
+    // } [Junil] 플레이어 스탯
+
+
 
     private void Awake()
     {
@@ -24,6 +37,17 @@ public class PlayerControl : MonoBehaviour
         playerAttack = gameObject.GetComponent<PlayerAttack>();
         holdEnemyPos = gameObject.transform.GetChild(3).gameObject;
 
+        GameObject gameUIObjs_ = GFunc.GetRootObj("GameUIView");
+
+        GameObject playerHPUI_ = gameUIObjs_.transform.GetChild(1).gameObject;
+
+        playerHpbar = playerHPUI_.transform.GetChild(0).gameObject.GetComponent<Image>();
+
+        playerHp = 3;
+        playerHpMax = playerHp;
+
+
+
         isFirstHold = false;
 
         playerAnimator.SetTrigger("OnIdle");
@@ -33,7 +57,8 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ViewPlayerHp();
+
         LookMousePos();
 
         PlayerOnMove(playerInput.moveX, playerInput.moveZ);
@@ -76,6 +101,14 @@ public class PlayerControl : MonoBehaviour
         //GFunc.Log($"카메라 스크린 월드 : {Camera.main.WorldToScreenPoint(Input.mousePosition)}");
         //GFunc.Log($"플레이어 : {Camera.main.WorldToScreenPoint(gameObject.transform.position)}");
 
+    }
+
+
+    public void ViewPlayerHp()
+    {
+        float hpAmount_ = playerHp / (float)playerHpMax;
+
+        playerHpbar.fillAmount = hpAmount_;
     }
 
     public void PlayerOnMove(float inputX_, float inputZ_)
