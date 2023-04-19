@@ -38,6 +38,7 @@ public class TitleButtonControl : MonoBehaviour
     public void OnOpiton()
     {
         GFunc.Log("옵션 버튼 눌림");
+        OptionUIControl.Instance.SelectOpiton();
     }
 
     //! 게임 종료를 누르면 발동

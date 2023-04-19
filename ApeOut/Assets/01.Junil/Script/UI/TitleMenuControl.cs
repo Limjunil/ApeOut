@@ -44,14 +44,14 @@ public class TitleMenuControl : GSingleton<TitleMenuControl>
 
         titleMenuObj = gameUIObj_.transform.GetChild(1).gameObject;
 
-        GameObject albumBtn_ = titleMenuObj.transform.GetChild(1).gameObject;
+        GameObject albumBtn_ = titleMenuObj.transform.GetChild(2).gameObject;
 
         for (int i = 0; i < TITLE_MENU_CNT - 1; i++)
         {
             titleMenuBtns[i] = albumBtn_.transform.GetChild(i).gameObject;
         }
 
-        titleMenuBtns[TITLE_MENU_CNT - 1] = titleMenuObj.transform.GetChild(2).gameObject;
+        titleMenuBtns[TITLE_MENU_CNT - 1] = titleMenuObj.transform.GetChild(3).gameObject;
 
     }
 

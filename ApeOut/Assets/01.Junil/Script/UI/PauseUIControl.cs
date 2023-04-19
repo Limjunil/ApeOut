@@ -22,6 +22,12 @@ public class PauseUIControl : GSingleton<PauseUIControl>
 
         SceneManager.sceneLoaded += LoadedsceneEvent;
 
+        Scene scene_ = SceneManager.GetActiveScene();
+
+        if (scene_.name == RDefine.PLAY_SCENE)
+        {
+            SetUpPauseUI();
+        }
     }
 
     public void LoadedsceneEvent(Scene scene_, LoadSceneMode load)

@@ -11,6 +11,7 @@ public class PlayerCall : MonoBehaviour
         // pauseUI 싱글톤 호출
         PauseUIControl.Instance.Create();
         TitleMenuControl.Instance.Create();
+        OptionUIControl.Instance.Create();
         UIManager.Instance.Create();
     }
 

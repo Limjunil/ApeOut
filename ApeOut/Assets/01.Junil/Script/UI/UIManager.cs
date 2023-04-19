@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : GSingleton<UIManager>
 {
-    
+    public GameObject playerUIObj = default;
+    public SkinnedMeshRenderer playerNowMesh = default;
+
+    public Material[] playerMaterials = new Material[2];
+
     public bool isOpenPause = false;
 
     public bool isAlbum = false;
@@ -72,22 +76,51 @@ public class UIManager : GSingleton<UIManager>
 
         if (scene_.name == RDefine.TITLE_SCENE)
         {
+
+
             GameObject gameUIObj_ = GFunc.GetRootObj("GameUIView");
 
             for (int i = 0; i < 2; i++)
             {
                 titleMenus[i] = gameUIObj_.transform.GetChild(i).gameObject;
             }
+
+
+            playerUIObj = GFunc.GetRootObj("Player");
+            GameObject playerMesh_ = playerUIObj.transform.GetChild(1).gameObject;
+
+            playerNowMesh = playerMesh_.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>();
+
+            playerMaterials = Resources.LoadAll<Material>("01.Junil/Material/UIPlayer");
+
+            playerNowMesh.material = playerMaterials[0];
         }
     }
 
+    public void ChangeBearPos(bool isAlbum_)
+    {
+        if(isAlbum_ == false)
+        {
+            playerNowMesh.material = playerMaterials[1];
+            playerUIObj.transform.localPosition = new Vector3(0.25f, 4.5f, 0.85f);
+            playerUIObj.transform.localRotation = Quaternion.Euler(-70f, -90f, 90f);
+        }
+        else
+        {
+            playerNowMesh.material = playerMaterials[0];
 
+            playerUIObj.transform.localPosition = new Vector3(0.25f, 4.5f, -0.85f);
+            playerUIObj.transform.localRotation = Quaternion.Euler(-87f, 90f, 90f);
+        }
+
+    }
 
     //! 타이틀에서 앨범으로 움직이는 함수
     public void ChangeTitleToAlbum()
     {
 
         StartCoroutine(ChangeTitleMenu(isAlbum));
+        ChangeBearPos(isAlbum);
 
         isAlbum = true;
 
@@ -101,6 +134,7 @@ public class UIManager : GSingleton<UIManager>
         if(isAlbum == true)
         {
             StartCoroutine(ChangeTitleMenu(isAlbum));
+            ChangeBearPos(isAlbum);
 
             isAlbum = false;
 
