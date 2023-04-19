@@ -14,6 +14,7 @@ Make a ApeOut Game Project
 23/04/14 - Make player Grab and Proto TitleScene    
 23/04/17 - Make PauseUI and UIManager    
 23/04/18 - First Team Build ok and Title Album UI making    
+23/04/19 -    
 
 
 ## [YMG]
