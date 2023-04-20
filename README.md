@@ -15,6 +15,8 @@ Make a ApeOut Game Project
 23/04/17 - Make PauseUI and UIManager    
 23/04/18 - First Team Build ok and Title Album UI making    
 23/04/19 - Add Option UI And Add enemyBullet pooling, Make PlayerHp Bar    
+23/04/20 - Make Screen Size Select and FullScreen Option    
+23/04/20 - Make UI Move easing and PlayerChkPos Line Renderer    
 
 
 ## [YMG]
