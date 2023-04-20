@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class OptionUIControl : GSingleton<OptionUIControl>
 {
     // 타이틀 메뉴들
-    public GameObject titleTxts = default;
+    public GameObject titleTxt = default;
+    public GameObject titleBtns = default;
     public GameObject optionTxts = default;
 
 
@@ -41,6 +42,7 @@ public class OptionUIControl : GSingleton<OptionUIControl>
     public int shakeVal;
 
 
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -66,7 +68,8 @@ public class OptionUIControl : GSingleton<OptionUIControl>
     {
         if(isOpenOption == false)
         {
-            titleTxts.transform.localScale = closeUISize;
+            StartCoroutine(MoveTitle(isOpenOption));
+            titleBtns.transform.localScale = closeUISize;
 
             NowOptionText();
 
@@ -76,10 +79,44 @@ public class OptionUIControl : GSingleton<OptionUIControl>
         }
         else
         {
-            titleTxts.transform.localScale = Vector3.one;
+            StartCoroutine(MoveTitle(isOpenOption));
+
+
+            titleBtns.transform.localScale = Vector3.one;
             optionTxts.transform.localScale = closeUISize;
 
             isOpenOption = false;
+
+        }
+    }
+
+    //! 옵션 버튼을 입력시 타이틀이 올라가거나 내려오는 함수
+    IEnumerator MoveTitle(bool isOpenOption_)
+    {
+        float time_ = 0f;
+        float posTitleTxt_ = 0f;
+
+        while (true)
+        {
+            if (1f <= time_)
+            {
+                yield break;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+
+            time_ += 0.2f;
+
+            if (isOpenOption_ == false)
+            {
+                posTitleTxt_ = UIManager.Instance.EaseInOutBack(150f, 450f, time_);
+            }
+            else
+            {
+                posTitleTxt_ = UIManager.Instance.EaseInOutBack(450f, 150f, time_);
+            }
+
+            titleTxt.transform.localPosition = new Vector3(0f, posTitleTxt_, 0f);
 
         }
     }
@@ -214,8 +251,9 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
         GameObject titleMenuObj_ = gameUIObj_.transform.GetChild(0).gameObject;
 
-        titleTxts = titleMenuObj_.transform.GetChild(1).gameObject;
-        optionTxts = titleMenuObj_.transform.GetChild(2).gameObject;
+        titleTxt = titleMenuObj_.transform.GetChild(1).gameObject;
+        titleBtns = titleMenuObj_.transform.GetChild(2).gameObject;
+        optionTxts = titleMenuObj_.transform.GetChild(3).gameObject;
 
         GameObject screenSeletObjs_ = optionTxts.transform.GetChild(0).gameObject;
         GameObject fullScreenObjs_ = optionTxts.transform.GetChild(1).gameObject;
@@ -237,7 +275,6 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
 
         isOpenOption = false;
-
 
         isFull = false;
 
