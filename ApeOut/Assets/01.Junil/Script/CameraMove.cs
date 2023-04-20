@@ -48,7 +48,7 @@ public class CameraMove : MonoBehaviour
         addPlusX = 0f;
         addPlusZ = 0f;
 
-    gameObject.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+        gameObject.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
         GetTargetPlayer();
     }
 
@@ -170,6 +170,12 @@ public class CameraMove : MonoBehaviour
         ////GFunc.Log($"{nowTarget}");
         //// 부드러운 움직임을 위해서 Vector3.Lerp 사용
         //gameObject.transform.position = Vector3.Lerp(transform.position, nowTarget, SPEED_CAMERA * Time.deltaTime);
+
+    }
+
+    //! 플레이어가 죽으면 작동하는 함수
+    public void DeadCameraMove()
+    {
 
     }
 

@@ -29,6 +29,18 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
     public bool isOpenOption = false;
 
+    public int[] screenWidth = default;
+    public int[] screenHeight = default;
+
+    FullScreenMode screenMode = default;
+
+    public bool isFull = false;
+    public int chkScreenVal;
+
+    public int soundVal;
+    public int shakeVal;
+
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -55,6 +67,9 @@ public class OptionUIControl : GSingleton<OptionUIControl>
         if(isOpenOption == false)
         {
             titleTxts.transform.localScale = closeUISize;
+
+            NowOptionText();
+
             optionTxts.transform.localScale = Vector3.one;
 
             isOpenOption = true;
@@ -128,8 +143,62 @@ public class OptionUIControl : GSingleton<OptionUIControl>
         cancelBtn.fontSize = BEFORE_FONT_SIZE;
     }
 
+    public void NowOptionText()
+    {
+        screenSelet[1].text = $"{screenWidth[chkScreenVal]} {screenHeight[chkScreenVal]}";
 
 
+        if (isFull == false)
+        {
+            fullScreen[1].text = "창모드";
+        }
+        else
+        {
+            fullScreen[1].text = "전체 화면";
+
+        }
+
+        soundControl[1].text = $"{soundVal}";
+
+        shakeControl[1].text = $"{shakeVal}";
+
+    }
+
+
+    public void ChangeFullScreen()
+    {
+        if (isFull == false)
+        {
+            isFull = true;
+
+        }
+        else
+        {
+            isFull = false;
+        }
+
+        FullScreenBtn(isFull);
+
+    }
+
+    public void FullScreenBtn(bool isFull)
+    {
+        if (isFull == false)
+        {
+            screenMode = FullScreenMode.Windowed;
+        }
+        else
+        {
+            screenMode = FullScreenMode.FullScreenWindow;
+        }
+    }
+
+
+    public void SelectScreen()
+    {
+        Screen.SetResolution(
+            screenWidth[chkScreenVal], screenHeight[chkScreenVal], screenMode);
+    }
 
 
     //! 옵션 UI 가져오기
@@ -137,6 +206,7 @@ public class OptionUIControl : GSingleton<OptionUIControl>
     {
         if (scene_.name != RDefine.TITLE_SCENE)
         {
+            
             return;
         }
 
@@ -167,6 +237,29 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
 
         isOpenOption = false;
+
+
+        isFull = false;
+
+        if (chkScreenVal == default)
+        {
+            chkScreenVal = 0;
+        }
+
+        screenWidth = new int[] { 1280, 1360, 1600, 1760, 1920 };
+
+        screenHeight = new int[] { 720, 765, 900, 990, 1080 };
+
+        if (soundVal == default)
+        {
+            soundVal = 10;
+        }
+
+        if (shakeVal == default)
+        {
+            shakeVal = 5;
+        }
+
 
         optionTxts.transform.localScale = closeUISize;
     }

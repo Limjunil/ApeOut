@@ -21,6 +21,9 @@ public class UIManager : GSingleton<UIManager>
 
     public const int MOVE_POS_VAL = 850;
 
+
+    public PlayerChkPos playerChkPos = default;
+
     protected override void Init()
     {
         base.Init();
@@ -94,6 +97,12 @@ public class UIManager : GSingleton<UIManager>
             playerMaterials = Resources.LoadAll<Material>("01.Junil/Material/UIPlayer");
 
             playerNowMesh.material = playerMaterials[0];
+        }
+        else if (scene_.name == RDefine.PLAY_SCENE)
+        {
+            GameObject playerChkObj_ = GFunc.GetRootObj("PlayerChkPos");
+
+            playerChkPos = playerChkObj_.GetComponent<PlayerChkPos>();
         }
     }
 

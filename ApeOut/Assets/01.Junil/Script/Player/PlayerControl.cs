@@ -22,8 +22,9 @@ public class PlayerControl : MonoBehaviour
     public int playerHpMax = default;
 
     public int playerHp = default;
-    // } [Junil] 플레이어 스탯
 
+    public bool isDead = false;
+    // } [Junil] 플레이어 스탯
 
 
     private void Awake()
@@ -46,9 +47,10 @@ public class PlayerControl : MonoBehaviour
         playerHp = 3;
         playerHpMax = playerHp;
 
-
+        isDead = false;
 
         isFirstHold = false;
+
 
         playerAnimator.SetTrigger("OnIdle");
     }
@@ -57,6 +59,12 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 죽으면 정지
+        if(isDead == true)
+        {
+            return;
+        }
+
         ViewPlayerHp();
 
         LookMousePos();
@@ -98,18 +106,30 @@ public class PlayerControl : MonoBehaviour
                 playerAttack.OffHold();
             }
         }
+
         //GFunc.Log($"카메라 스크린 월드 : {Camera.main.WorldToScreenPoint(Input.mousePosition)}");
         //GFunc.Log($"플레이어 : {Camera.main.WorldToScreenPoint(gameObject.transform.position)}");
 
     }
 
+    //! 플레이어 사망 시 호출
+    public void PlayerDie()
+    {
+        // 플레이어가 죽게 되면 죽는 애니메이션과 죽는 액션의 카메라 호출
+    }
 
     public void ViewPlayerHp()
     {
+
         float hpAmount_ = playerHp / (float)playerHpMax;
 
         playerHpbar.fillAmount = hpAmount_;
-    }
+
+        if(playerHp <= 0)
+        {
+            isDead = true;
+        }
+    }   // ViewPlayerHp
 
     public void PlayerOnMove(float inputX_, float inputZ_)
     {
@@ -124,7 +144,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         playerMove.OnMove(inputX_, inputZ_);
-    }
+    }   // PlayerOnMove
 
 
     //! 곰이 마우스 커서 위치를 바라보는 함수
@@ -156,5 +176,5 @@ public class PlayerControl : MonoBehaviour
 
 
 
-    }
+    }   // LookMousePos
 }
