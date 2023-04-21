@@ -17,6 +17,7 @@ Make a ApeOut Game Project
 23/04/19 - Add Option UI And Add enemyBullet pooling, Make PlayerHp Bar    
 23/04/20 - Make Screen Size Select and FullScreen Option    
 23/04/20 - Make UI Move easing and PlayerChkPos Line Renderer    
+23/04/21 - Make Camera Shaking    
 
 
 ## [YMG]
