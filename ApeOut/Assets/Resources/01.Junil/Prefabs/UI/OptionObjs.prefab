@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8274966829236510541}
   - component: {fileID: 8274966829236510540}
   - component: {fileID: 8274966829236510531}
+  - component: {fileID: 83148081316332177}
   m_Layer: 5
   m_Name: SaveTxt
   m_TagString: Untagged
@@ -214,6 +215,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionBtnName: 
   selectBtn: {fileID: 0}
+--- !u!114 &83148081316332177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274966829236510529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a11b5bc2ee5764baf0475dd47a6429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleMultiplier: 0
+  CurveScale: 0
+  tmpTxt: {fileID: 0}
+  hasTextChanged: 0
 --- !u!1 &8274966829247623062
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,6 +244,7 @@ GameObject:
   - component: {fileID: 8274966829247623058}
   - component: {fileID: 8274966829247623057}
   - component: {fileID: 8274966829247623056}
+  - component: {fileID: 7813461168856898165}
   m_Layer: 5
   m_Name: NowScreenStatusTxt
   m_TagString: Untagged
@@ -428,6 +446,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionBtnName: 
   selectBtn: {fileID: 0}
+--- !u!114 &7813461168856898165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274966829247623062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a11b5bc2ee5764baf0475dd47a6429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleMultiplier: 0
+  CurveScale: 0
+  tmpTxt: {fileID: 0}
+  hasTextChanged: 0
 --- !u!1 &8274966829259020134
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +555,7 @@ GameObject:
   - component: {fileID: 8274966829825477065}
   - component: {fileID: 8274966829825477064}
   - component: {fileID: 8274966829825477071}
+  - component: {fileID: 6630294067662951258}
   m_Layer: 5
   m_Name: NowShakeTxt
   m_TagString: Untagged
@@ -710,6 +745,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionBtnName: 
   selectBtn: {fileID: 0}
+--- !u!114 &6630294067662951258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274966829825477069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a11b5bc2ee5764baf0475dd47a6429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleMultiplier: 0
+  CurveScale: 0
+  tmpTxt: {fileID: 0}
+  hasTextChanged: 0
 --- !u!1 &8274966830118556739
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,6 +810,7 @@ GameObject:
   - component: {fileID: 8274966830173181706}
   - component: {fileID: 8274966830173181716}
   - component: {fileID: 8274966830173181707}
+  - component: {fileID: 5734093101718370234}
   m_Layer: 5
   m_Name: SelectScreenTxt
   m_TagString: Untagged
@@ -884,6 +936,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5734093101718370234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274966830173181705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a11b5bc2ee5764baf0475dd47a6429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleMultiplier: 0
+  CurveScale: 0
+  tmpTxt: {fileID: 0}
+  hasTextChanged: 0
 --- !u!1 &8274966830243749884
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,6 +965,7 @@ GameObject:
   - component: {fileID: 8274966830243749880}
   - component: {fileID: 8274966830243749887}
   - component: {fileID: 8274966830243749886}
+  - component: {fileID: 6283082692750250826}
   m_Layer: 5
   m_Name: NowSoundTxt
   m_TagString: Untagged
@@ -1086,6 +1155,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionBtnName: 
   selectBtn: {fileID: 0}
+--- !u!114 &6283082692750250826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274966830243749884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a11b5bc2ee5764baf0475dd47a6429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleMultiplier: 0
+  CurveScale: 0
+  tmpTxt: {fileID: 0}
+  hasTextChanged: 0
 --- !u!1 &8274966830252147294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,6 +1182,7 @@ GameObject:
   - component: {fileID: 8274966830252147295}
   - component: {fileID: 8274966830252147289}
   - component: {fileID: 8274966830252147288}
+  - component: {fileID: 7544556754783748290}
   m_Layer: 5
   m_Name: SoundTxt
   m_TagString: Untagged
@@ -1222,6 +1308,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7544556754783748290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274966830252147294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a11b5bc2ee5764baf0475dd47a6429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleMultiplier: 0
+  CurveScale: 0
+  tmpTxt: {fileID: 0}
+  hasTextChanged: 0
 --- !u!1 &8274966830274137784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,6 +1373,7 @@ GameObject:
   - component: {fileID: 8274966830323043006}
   - component: {fileID: 8274966830323043000}
   - component: {fileID: 8274966830323043007}
+  - component: {fileID: 4951161259595168997}
   m_Layer: 5
   m_Name: FullScreenTxt
   m_TagString: Untagged
@@ -1396,6 +1499,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4951161259595168997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274966830323043005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a11b5bc2ee5764baf0475dd47a6429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleMultiplier: 0
+  CurveScale: 0
+  tmpTxt: {fileID: 0}
+  hasTextChanged: 0
 --- !u!1 &8274966830375843640
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,6 +1528,7 @@ GameObject:
   - component: {fileID: 8274966830375843588}
   - component: {fileID: 8274966830375843643}
   - component: {fileID: 8274966830375843642}
+  - component: {fileID: 762466784068756811}
   m_Layer: 5
   m_Name: CancelTxt
   m_TagString: Untagged
@@ -1610,6 +1730,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionBtnName: 
   selectBtn: {fileID: 0}
+--- !u!114 &762466784068756811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274966830375843640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a11b5bc2ee5764baf0475dd47a6429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleMultiplier: 0
+  CurveScale: 0
+  tmpTxt: {fileID: 0}
+  hasTextChanged: 0
 --- !u!1 &8274966830407989653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,6 +1759,7 @@ GameObject:
   - component: {fileID: 8274966830407989649}
   - component: {fileID: 8274966830407989648}
   - component: {fileID: 8274966830407989655}
+  - component: {fileID: 7781120881082559107}
   m_Layer: 5
   m_Name: NowScreenTxt
   m_TagString: Untagged
@@ -1824,6 +1961,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionBtnName: 
   selectBtn: {fileID: 0}
+--- !u!114 &7781120881082559107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274966830407989653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a11b5bc2ee5764baf0475dd47a6429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleMultiplier: 0
+  CurveScale: 0
+  tmpTxt: {fileID: 0}
+  hasTextChanged: 0
 --- !u!1 &8274966830903647127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,6 +1988,7 @@ GameObject:
   - component: {fileID: 8274966830903647120}
   - component: {fileID: 8274966830903647122}
   - component: {fileID: 8274966830903647121}
+  - component: {fileID: 1062166545756192029}
   m_Layer: 5
   m_Name: ShakeTxt
   m_TagString: Untagged
@@ -1960,6 +2114,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1062166545756192029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274966830903647127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a11b5bc2ee5764baf0475dd47a6429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleMultiplier: 0
+  CurveScale: 0
+  tmpTxt: {fileID: 0}
+  hasTextChanged: 0
 --- !u!1 &8274966830983877579
 GameObject:
   m_ObjectHideFlags: 0

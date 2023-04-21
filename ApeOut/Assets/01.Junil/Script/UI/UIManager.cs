@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : GSingleton<UIManager>
 {
     public GameObject playerUIObj = default;
+
     public SkinnedMeshRenderer playerNowMesh = default;
 
     public Material[] playerMaterials = new Material[2];
@@ -35,7 +36,6 @@ public class UIManager : GSingleton<UIManager>
         base.Start();
 
         SceneManager.sceneLoaded += LoadedsceneEvent;
-
 
         Scene scene_ = SceneManager.GetActiveScene();
 
@@ -202,6 +202,7 @@ public class UIManager : GSingleton<UIManager>
         }
 
     }
+
     public float EaseInOutBack(float start, float end, float value)
     {
 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 370187674789826694}
   - component: {fileID: 370187674789826689}
   - component: {fileID: 370187674789826688}
+  - component: {fileID: 1834114627}
   m_Layer: 5
   m_Name: GamePlayTxt
   m_TagString: Untagged
@@ -213,6 +214,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1834114627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370187674789826692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a11b5bc2ee5764baf0475dd47a6429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleMultiplier: 1
+  CurveScale: 1
+  tmpTxt: {fileID: 0}
+  hasTextChanged: 0
 --- !u!1 &370187675254442202
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +243,7 @@ GameObject:
   - component: {fileID: 370187675254442196}
   - component: {fileID: 370187675254442198}
   - component: {fileID: 370187675254442199}
+  - component: {fileID: 1431518125}
   m_Layer: 5
   m_Name: OpitonTxt
   m_TagString: Untagged
@@ -426,6 +444,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1431518125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370187675254442202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a11b5bc2ee5764baf0475dd47a6429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleMultiplier: 1
+  CurveScale: 1
+  tmpTxt: {fileID: 0}
+  hasTextChanged: 0
 --- !u!1 &370187675374804777
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,6 +473,7 @@ GameObject:
   - component: {fileID: 370187675374804779}
   - component: {fileID: 370187675374804773}
   - component: {fileID: 370187675374804774}
+  - component: {fileID: 1094279269}
   m_Layer: 5
   m_Name: GameEndTxt
   m_TagString: Untagged
@@ -639,6 +674,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1094279269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370187675374804777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a11b5bc2ee5764baf0475dd47a6429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleMultiplier: 1
+  CurveScale: 1
+  tmpTxt: {fileID: 0}
+  hasTextChanged: 0
 --- !u!1 &370187675817324294
 GameObject:
   m_ObjectHideFlags: 0
