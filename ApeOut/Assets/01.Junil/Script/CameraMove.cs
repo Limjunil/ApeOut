@@ -29,6 +29,18 @@ public class CameraMove : MonoBehaviour
     public bool isWallChk = false;
 
 
+    // { [Junil] 카메라 흔들림 추가
+    // 카메라를 흔들어야 하는지 체크하는 bool 값
+    public bool isShake = false;
+
+    public float shakeX = default;
+    public float shakeZ = default;
+
+    public float shakeForce = default;
+
+
+    // } [Junil] 카메라 흔들림 추가
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,10 +55,13 @@ public class CameraMove : MonoBehaviour
         offset = new Vector3(0f, 8f, 0f);
 
         isWallChk = false;
+        isShake = false;
         nowTarget = default;
 
         addPlusX = 0f;
         addPlusZ = 0f;
+
+        shakeForce = 5f;
 
         gameObject.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
         GetTargetPlayer();
@@ -85,6 +100,13 @@ public class CameraMove : MonoBehaviour
 
     public void CameraMoveOne()
     {
+        if(isShake == true)
+        {
+            isShake = false;
+
+            StartShakeCam();
+
+        }
                 
         var mousPosTest_ = Input.mousePosition;
 
@@ -101,6 +123,12 @@ public class CameraMove : MonoBehaviour
 
         float clampMinZ = Mathf.Clamp(mousePos_.z,
             targetPos_.z - (cameraWidth * 0.2f), targetPos_.z + (cameraWidth * 0.2f));
+
+        //if (isWallChk == false)
+        //{
+        //    addPlusX = 0f;
+        //    addPlusZ = 0f;
+        //}
 
 
         // 새로운 카메라 위치를 잡아주기 위한 값들
@@ -195,6 +223,64 @@ public class CameraMove : MonoBehaviour
         addPlusZ = moveCamera_.z;
         //gameObject.transform.position = Vector3.Lerp(transform.position, targetCameraPos_, SPEED_CAMERA * Time.deltaTime);
 
+    }
+
+    // 카메라의 흔들리는 값은 코루틴으로 구한다
+    IEnumerator ShakeCamera = default;
+
+
+    public void StartShakeCam()
+    {
+        ShakeCamera = ShakeCameraVal();
+        StartCoroutine(ShakeCamera);
+    }
+
+    public void StopShakeCam()
+    {
+        if(ShakeCamera != null)
+        {
+            StopCoroutine(ShakeCamera);
+
+            addPlusX = 0f;
+            addPlusZ = 0f;
+        }
+    }
+
+
+    //! 카메라 흔들림을 표현하는 함수
+    public IEnumerator ShakeCameraVal()
+    {
+
+        float time_ = 0f;
+
+        while (true)
+        {
+            if(2f <= time_)
+            {
+                addPlusX = 0f;
+                addPlusZ = 0f;
+
+                yield break;
+            }
+
+            yield return new WaitForSeconds(0.02f);
+            //GFunc.Log("흔들림 호출");
+
+            time_ += 0.1f;
+
+            // Random.insideUnitSphere는 범위 1의 크기 랜덤 값을 가짐
+
+            float randomX_ = Random.insideUnitSphere.x * shakeForce;
+
+            float randomZ_ = Random.insideUnitSphere.z * shakeForce;
+
+            addPlusX = randomX_;
+            addPlusZ = randomZ_;
+
+
+        }
+
+        
     }
 
 
