@@ -37,7 +37,7 @@ public class PlayerChkWall : MonoBehaviour
             if(chkPos == other.transform.position || 2 <= collCnt) { return; }
             collCnt++;
             chkPos = other.transform.position;
-            PlayerManager.Instance.mainCamera.WallCameraMove(chkPos);
+            //PlayerManager.Instance.mainCamera.WallCameraMove(chkPos);
             //gameObject.transform.position = collision.transform.position;
         }
     }

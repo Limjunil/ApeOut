@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TestSketchScribbleSS
+  m_Name: TestSketchDLineSS
   m_Shader: {fileID: 4800000, guid: 7633a2fd8a3bed44791c9e952ff86e5d, type: 3}
   m_ValidKeywords:
   - _MK_ARTISTIC_ANIMATION_STUTTER
@@ -17,7 +17,7 @@ Material:
   - _MK_FRESNEL_HIGHLIGHTS
   - _MK_OUTLINE_HULL_CLIP
   - _MK_RECEIVE_SHADOWS
-  - _MK_SPECULAR_ANISOTROPIC
+  - _MK_SPECULAR_ISOTROPIC
   m_InvalidKeywords:
   - _FRESNELHIGHLIGHTS_ON
   - _RECEIVESHADOWS_ON
@@ -145,7 +145,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SketchMap:
-        m_Texture: {fileID: 2800000, guid: 58f45f2c132eab940a1afe387a40bb17, type: 3}
+        m_Texture: {fileID: 2800000, guid: 77974a808bd353d4dbf5e6f89e27eb49, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularMap:
@@ -261,10 +261,10 @@ Material:
     - _RimThresholdOffset: 0.25
     - _Roughness: 0.5
     - _Saturation: 1
-    - _SketchMapScale: 2.5
+    - _SketchMapScale: 5
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
-    - _Specular: 2
+    - _Specular: 1
     - _SpecularHighlights: 1
     - _SpecularIntensity: 10
     - _SpecularSmoothness: 0
@@ -290,8 +290,8 @@ Material:
     - _ZTest: 4
     - _ZWrite: 1
     m_Colors:
-    - _AlbedoColor: {r: 1, g: 0, b: 0, a: 1}
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _AlbedoColor: {r: 0.3529412, g: 0.3529412, b: 0.3529412, a: 1}
+    - _Color: {r: 0.35294116, g: 0.35294116, b: 0.35294116, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveBorderColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

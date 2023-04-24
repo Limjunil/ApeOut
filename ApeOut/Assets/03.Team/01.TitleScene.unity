@@ -1680,7 +1680,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136449656}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 8, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1962,6 +1962,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuBtnName: 
   selectBtn: {fileID: 0}
+  stageOneImgs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  stageImgNow: {fileID: 0}
+  stageMenuObj: {fileID: 0}
+  stagePos: {x: 0, y: 0, z: 0}
 --- !u!114 &1174168299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2868,7 +2875,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 422160229041333581}
   m_LocalRotation: {x: 0.018509835, y: 0.7068645, z: 0.7068645, w: 0.018509835}
-  m_LocalPosition: {x: 0.25, y: 4.5, z: -0.85}
+  m_LocalPosition: {x: 0.25, y: 6, z: -0.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -111,14 +111,14 @@ public class UIManager : GSingleton<UIManager>
         if(isAlbum_ == false)
         {
             playerNowMesh.material = playerMaterials[1];
-            playerUIObj.transform.localPosition = new Vector3(0.25f, 4.5f, 0.85f);
+            playerUIObj.transform.localPosition = new Vector3(0.25f, 6f, 0.85f);
             playerUIObj.transform.localRotation = Quaternion.Euler(-70f, -90f, 90f);
         }
         else
         {
             playerNowMesh.material = playerMaterials[0];
 
-            playerUIObj.transform.localPosition = new Vector3(0.25f, 4.5f, -0.85f);
+            playerUIObj.transform.localPosition = new Vector3(0.25f, 6f, -0.85f);
             playerUIObj.transform.localRotation = Quaternion.Euler(-87f, 90f, 90f);
         }
 
