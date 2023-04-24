@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.DebugUI;
 
 
 public class OptionUIControl : GSingleton<OptionUIControl>
@@ -30,10 +31,10 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
     public bool isOpenOption = false;
 
-    public int[] screenWidth = default;
-    public int[] screenHeight = default;
+    public int[] screenWidth;
+    public int[] screenHeight;
 
-    FullScreenMode screenMode = default;
+    FullScreenMode screenMode;
 
     public bool isFull = false;
     public int chkScreenVal;
@@ -42,6 +43,8 @@ public class OptionUIControl : GSingleton<OptionUIControl>
     public int shakeVal;
 
 
+    public bool isFullTemp;
+    public int chkScreenValTemp;
 
     // Start is called before the first frame update
     public override void Start()
@@ -63,6 +66,24 @@ public class OptionUIControl : GSingleton<OptionUIControl>
     }
 
 
+    public void SetNowOption()
+    {
+        isFullTemp = isFull;
+        chkScreenValTemp = chkScreenVal;
+
+        if(isFull == false)
+        {
+            PlayerPrefs.SetInt("fullChk", System.Convert.ToInt32(0));
+        }
+        else
+        {
+            PlayerPrefs.SetInt("fullChk", System.Convert.ToInt32(1));
+        }
+
+        PlayerPrefs.SetInt("chkScreenVal", chkScreenVal);
+    }
+
+
     //! 옵션 버튼이 눌리면 옵션이 나오는 함수
     public void SelectOpiton()
     {
@@ -71,6 +92,9 @@ public class OptionUIControl : GSingleton<OptionUIControl>
             StartCoroutine(MoveTitle(isOpenOption));
             titleBtns.transform.localScale = closeUISize;
 
+            // 
+
+            SetNowOption();
             NowOptionText();
 
             optionTxts.transform.localScale = Vector3.one;
@@ -81,6 +105,8 @@ public class OptionUIControl : GSingleton<OptionUIControl>
         {
             StartCoroutine(MoveTitle(isOpenOption));
 
+            isFull = isFullTemp;
+            chkScreenVal = chkScreenValTemp;
 
             titleBtns.transform.localScale = Vector3.one;
             optionTxts.transform.localScale = closeUISize;
@@ -182,6 +208,7 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
     public void NowOptionText()
     {
+        
         screenSelet[1].text = $"{screenWidth[chkScreenVal]} {screenHeight[chkScreenVal]}";
 
 
@@ -212,9 +239,10 @@ public class OptionUIControl : GSingleton<OptionUIControl>
         else
         {
             isFull = false;
+
         }
 
-        FullScreenBtn(isFull);
+
 
     }
 
@@ -233,6 +261,10 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
     public void SelectScreen()
     {
+        SetNowOption();
+
+        FullScreenBtn(isFull);
+
         Screen.SetResolution(
             screenWidth[chkScreenVal], screenHeight[chkScreenVal], screenMode);
     }
@@ -276,12 +308,11 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
         isOpenOption = false;
 
-        isFull = false;
+        //Full = false;
 
-        if (chkScreenVal == default)
-        {
-            chkScreenVal = 0;
-        }
+        isFull = System.Convert.ToBoolean(PlayerPrefs.GetInt("fullChk"));
+
+        chkScreenVal = PlayerPrefs.GetInt("chkScreenVal");
 
         screenWidth = new int[] { 1280, 1360, 1600, 1760, 1920 };
 
@@ -299,6 +330,9 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
 
         optionTxts.transform.localScale = closeUISize;
+
+        NowOptionText();
+        SelectScreen();
     }
 
 
