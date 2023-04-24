@@ -4,52 +4,37 @@ using UnityEngine;
 
 public class AutoDoor : MonoBehaviour
 {
-    public GameObject Door;
-
-    public float opening = 10f;
-    public float closing = 0f;
-    public float moveSpeed = 5f;
-
-    bool isPlayer;
-    //bool isOpen;
+    public Animator doorAnim;
+    public Transform playersence;
+    public Transform door;
+    //public BoxCollider doorCollider;
 
     void Start()
     {
-        isPlayer = false;
-        //isOpen = false;
+        playersence = GameObject.FindGameObjectWithTag("Player").transform;
+        //playersence = PlayerManager.Instance.player.transform;
+        // 플레이어를 싱글톤 속 인스턴스로 선언해서 find 를 안써도 됨
     }
 
     void Update()
     {
-        if (isPlayer)
+        float distance = Vector3.Distance(playersence.position, door.position);
+
+        if (distance <= 5)
         {
-            if (Door.transform.position.x < opening)
-            {
-                Door.transform.Translate(moveSpeed * Time.deltaTime, 0f, 0f);
-            }
+            doorAnim.SetBool("Near", true);
+            //gameObject.GetComponent<BoxCollider>().enabled = false;
         }
         else 
         {
-            if (Door.transform.position.x > closing)
-            {
-                Door.transform.Translate(-moveSpeed * Time.deltaTime, 0f, 0f);
-            }
+            doorAnim.SetBool("Near", false);
+            //gameObject.GetComponent<BoxCollider>().enabled = true;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnDrawGizmos()
     {
-        if (other.gameObject.tag == "Player") 
-        {
-            isPlayer = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player") 
-        {
-            isPlayer = false;
-        }
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, 5);
     }
 }
