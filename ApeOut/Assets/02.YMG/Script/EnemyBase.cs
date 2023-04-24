@@ -43,6 +43,7 @@ public class EnemyBase : MonoBehaviour
     public float enemySpeed = 3;
     public float spawnRate;
 
+    public bool isHold = false;
 
     public enum State
     {
@@ -50,23 +51,53 @@ public class EnemyBase : MonoBehaviour
         Action,
         Engage,
         Move,
-        Patrol
+        Patrol,
+        hold
     }
 
     public State state;
 
     public virtual void Awake()
     {
-        //부모에서 작동할 내용
-        Agent = GetComponent<NavMeshAgent>();
-        Anim = GetComponent<Animator>();
-        Target = GameObject.FindGameObjectWithTag("Player").transform;
-        UpdateDestination();
+        ////부모에서 작동할 내용
+        //Agent = GetComponent<NavMeshAgent>();
+        //Anim = GetComponent<Animator>();
+        ////Target = GameObject.FindGameObjectWithTag("Player").transform;
+        //Target = PlayerManager.Instance.player.transform;
+
+        //UpdateDestination();
     }
 
     protected virtual void Start()
     {
+        //부모에서 작동할 내용
+        Agent = GetComponent<NavMeshAgent>();
+        Anim = GetComponent<Animator>();
+        //Target = GameObject.FindGameObjectWithTag("Player").transform;
+        Target = PlayerManager.Instance.player.transform;
 
+        UpdateDestination();
+    }
+
+    public virtual void HoldToPlayer()
+    {
+        isHold = true;
+
+        state = State.hold;
+    }
+
+    // [Junil, YMG] 적이 플레이어에게 잡히는 함수
+    public virtual void HoldEnemy()
+    {
+        gameObject.transform.position = PlayerManager.Instance.player.holdEnemyPos.transform.position;
+
+
+        if(PlayerManager.Instance.player.playerAttack.isGrabChk == false)
+        {
+            isHold = false;
+
+            state = State.Guard;
+        }
     }
 
     public virtual void Patrol()
@@ -285,7 +316,6 @@ public class EnemyBase : MonoBehaviour
 
         // timeAfterSpawn 갱신
         timeAfterSpawn += Time.deltaTime;
-
 
     }
 

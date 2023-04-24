@@ -21,8 +21,6 @@ public class CameraMove : MonoBehaviour
     public float addPlusZ = default;
 
 
-
-
     // 예외 거리 값
     public float exceptionRangeVal = default;
 
@@ -36,7 +34,7 @@ public class CameraMove : MonoBehaviour
     public float shakeX = default;
     public float shakeZ = default;
 
-    public float shakeForce = default;
+    public int shakeForce = default;
 
 
     // } [Junil] 카메라 흔들림 추가
@@ -61,7 +59,7 @@ public class CameraMove : MonoBehaviour
         addPlusX = 0f;
         addPlusZ = 0f;
 
-        shakeForce = 5f;
+        shakeForce = PlayerPrefs.GetInt("shakeForce");
 
         gameObject.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
         GetTargetPlayer();
@@ -71,14 +69,7 @@ public class CameraMove : MonoBehaviour
 
     private void LateUpdate()
     {
-
-        // GFunc.Log($"{isWallChk}");
-
-        //if(isWallChk == true) { return; }
-
-        //gameObject.transform.position = targetPlayer.transform.position + offset;
-        
-
+                
         CameraMoveOne();
     }
 

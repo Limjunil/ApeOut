@@ -50,14 +50,6 @@ public class PlayerInput : MonoBehaviour
         cameraMoveZ = Input.GetAxis("Mouse Y");
 
 
-        if (Input.anyKeyDown)
-        {
-            
-            //GFunc.Log($"{cameraMoveX}, {cameraMoveZ}");
-
-            //GFunc.Log($"{mousePos_}");
-        }
-
 
     }
 }

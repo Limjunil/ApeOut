@@ -53,6 +53,22 @@ public class OptionBtn : MonoBehaviour
         OptionUIControl.Instance.NowOptionText();
     }
 
+
+    public void ClickShakeVal()
+    {
+        if(OptionUIControl.Instance.shakeVal == 1)
+        {
+            OptionUIControl.Instance.shakeVal = 5;
+        }
+        else
+        {
+            OptionUIControl.Instance.shakeVal--;
+        }
+
+        OptionUIControl.Instance.NowOptionText();
+    }
+
+
     //! 적용 버튼을 누르면 적용될 버튼
     public void SaveOption()
     {

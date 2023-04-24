@@ -31,31 +31,36 @@ public class AITest : EnemyBase
 
     private void FixedUpdate()
     {
+        
         isInFOV = InFOV(transform, Target, maxAngle, maxRadius);
 
-        if (state == State.Guard)
+        if (state == State.Guard || isHold != true)
         {
             //Debug.Log("경계 상태");
             Guard();
         }
-        else if (state == State.Action)
+        else if (state == State.Action || isHold != true)
         {
             //Debug.Log("행동 상태");
             Range();
         }
-        else if (state == State.Engage)
+        else if (state == State.Engage || isHold != true )
         {
             //Debug.Log("공격 상태");
             Engage();
         }
-        else if (state == State.Move)
+        else if (state == State.Move || isHold != true)
         {
             //Debug.Log("이동 상태");
             Move();
         }
-        else if (state == State.Patrol)
+        else if (state == State.Patrol || isHold != true)
         {
             Patrol();
+        }
+        else if(state == State.hold)
+        {
+            HoldEnemy();
         }
 
     }
@@ -64,6 +69,7 @@ public class AITest : EnemyBase
     public override void Shot()
     {
         base.Shot();
+        Agent.velocity = Vector3.zero;
 
         // 최근 생성 시점에서부터 누적된 시간이 생성 주기보다 크거나 같다면
         if (timeAfterSpawn >= spawnRate)

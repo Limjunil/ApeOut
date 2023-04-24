@@ -45,6 +45,7 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
     public bool isFullTemp;
     public int chkScreenValTemp;
+    public int shakeValTemp;
 
     // Start is called before the first frame update
     public override void Start()
@@ -70,8 +71,9 @@ public class OptionUIControl : GSingleton<OptionUIControl>
     {
         isFullTemp = isFull;
         chkScreenValTemp = chkScreenVal;
+        shakeValTemp = shakeVal;
 
-        if(isFull == false)
+        if (isFull == false)
         {
             PlayerPrefs.SetInt("fullChk", System.Convert.ToInt32(0));
         }
@@ -81,6 +83,8 @@ public class OptionUIControl : GSingleton<OptionUIControl>
         }
 
         PlayerPrefs.SetInt("chkScreenVal", chkScreenVal);
+
+        PlayerPrefs.SetInt("shakeForce", shakeVal);
     }
 
 
@@ -107,6 +111,7 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
             isFull = isFullTemp;
             chkScreenVal = chkScreenValTemp;
+            shakeVal = shakeValTemp;
 
             titleBtns.transform.localScale = Vector3.one;
             optionTxts.transform.localScale = closeUISize;
@@ -314,18 +319,22 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
         chkScreenVal = PlayerPrefs.GetInt("chkScreenVal");
 
-        screenWidth = new int[] { 1280, 1360, 1600, 1760, 1920 };
+        screenWidth = new int[] { 1280, 1366, 1600, 1760, 1920 };
 
-        screenHeight = new int[] { 720, 765, 900, 990, 1080 };
+        screenHeight = new int[] { 720, 768, 900, 990, 1080 };
 
         if (soundVal == default)
         {
             soundVal = 10;
         }
 
-        if (shakeVal == default)
+        shakeVal = PlayerPrefs.GetInt("shakeForce");
+
+        if(shakeVal == 0)
         {
-            shakeVal = 5;
+            PlayerPrefs.SetInt("shakeForce", 5);
+            shakeVal = PlayerPrefs.GetInt("shakeForce");
+
         }
 
 

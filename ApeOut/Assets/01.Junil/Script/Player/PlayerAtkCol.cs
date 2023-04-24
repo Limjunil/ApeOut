@@ -17,6 +17,8 @@ public class PlayerAtkCol : MonoBehaviour
             {
                 GFunc.Log("적 맞았음!");
 
+                PlayerManager.Instance.mainCamera.isShake = true;
+
                 Rigidbody tempEnemyRigid_ = other.gameObject.GetComponent<Rigidbody>();
 
                 tempEnemyRigid_.AddForce(transform.forward * PUNCH_FORCE, ForceMode.Impulse);
@@ -25,7 +27,8 @@ public class PlayerAtkCol : MonoBehaviour
             if(PlayerManager.Instance.player.playerAttack.isGrabChk == true)
             {
                 GFunc.Log("적 잡았음!");
-                
+
+                other.GetComponent<AITest>().HoldToPlayer();
             }
         }
     }
