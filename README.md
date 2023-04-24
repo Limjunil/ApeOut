@@ -14,7 +14,11 @@ Make a ApeOut Game Project
 23/04/14 - Make player Grab and Proto TitleScene    
 23/04/17 - Make PauseUI and UIManager    
 23/04/18 - First Team Build ok and Title Album UI making    
-23/04/19 -    
+23/04/19 - Add Option UI And Add enemyBullet pooling, Make PlayerHp Bar    
+23/04/20 - Make Screen Size Select and FullScreen Option    
+23/04/20 - Make UI Move easing and PlayerChkPos Line Renderer    
+23/04/21 - Make Camera Shaking    
+23/04/21 - Add TMP Text shake effect and proto Album Select    
 
 
 ## [YMG]
@@ -54,6 +58,10 @@ Stop Action은 파티클 시스템이 정지한 후의 행동을 설정하는데
 04/18    
 몬스터 일반형 상속형 완성    
 
-04/19
+04/19    
+패트롤 기능 추가    
+맵 제작 시작    
+    
+04/24
 
 
