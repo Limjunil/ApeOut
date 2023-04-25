@@ -19,6 +19,9 @@ Make a ApeOut Game Project
 23/04/20 - Make UI Move easing and PlayerChkPos Line Renderer    
 23/04/21 - Make Camera Shaking    
 23/04/21 - Add TMP Text shake effect and proto Album Select    
+23/04/24 - Fix Option    
+23/04/24 - Make Album Stage    
+23/04/25 -     
 
 
 ## [YMG]
@@ -64,4 +67,5 @@ Stop Action은 파티클 시스템이 정지한 후의 행동을 설정하는데
     
 04/24
 
+04/25
 
