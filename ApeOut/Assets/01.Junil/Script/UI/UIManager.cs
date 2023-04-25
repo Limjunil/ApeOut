@@ -25,6 +25,10 @@ public class UIManager : GSingleton<UIManager>
 
     public PlayerChkPos playerChkPos = default;
 
+
+    public GameObject deadUIObj = default;
+
+
     protected override void Init()
     {
         base.Init();
@@ -88,7 +92,7 @@ public class UIManager : GSingleton<UIManager>
                 titleMenus[i] = gameUIObj_.transform.GetChild(i).gameObject;
             }
 
-
+            
             playerUIObj = GFunc.GetRootObj("Player");
             GameObject playerMesh_ = playerUIObj.transform.GetChild(1).gameObject;
 
@@ -103,6 +107,11 @@ public class UIManager : GSingleton<UIManager>
             GameObject playerChkObj_ = GFunc.GetRootObj("PlayerChkPos");
 
             playerChkPos = playerChkObj_.GetComponent<PlayerChkPos>();
+
+            GameObject gameUIObj_ = GFunc.GetRootObj("GameUIView");
+
+            deadUIObj = gameUIObj_.transform.GetChild(2).gameObject;
+            deadUIObj.transform.localScale = new Vector3(0.0001f, 0.0001f, 0.0001f);
         }
     }
 
@@ -150,18 +159,20 @@ public class UIManager : GSingleton<UIManager>
         }
     }
 
-
+    
     //! 일시정지 메뉴를 키고 끌 수 있는 함수
     public void OnOffPauseUI()
     {
         if (isOpenPause == false)
         {
             isOpenPause = true;
+            Time.timeScale = 0;
             PauseUIControl.Instance.OpenPauseMenu();
         }
         else if (isOpenPause == true)
         {
             isOpenPause = false;
+            Time.timeScale = 1;
             PauseUIControl.Instance.OffPauseMenu();
 
         }

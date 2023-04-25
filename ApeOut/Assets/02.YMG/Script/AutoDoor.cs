@@ -18,6 +18,7 @@ public class AutoDoor : MonoBehaviour
 
     void Update()
     {
+
         float distance = Vector3.Distance(playersence.position, door.position);
 
         if (distance <= 5)

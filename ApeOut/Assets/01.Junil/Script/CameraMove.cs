@@ -15,7 +15,8 @@ public class CameraMove : MonoBehaviour
     // 카메라가 현재 잡고 있는 타겟
     public Vector3 nowTarget = default;
 
-    public Vector3 offset = default;
+    public Vector3 deadOffset = default;
+    public Quaternion deadRotate = default;
 
     public float addPlusX = default;
     public float addPlusZ = default;
@@ -50,7 +51,8 @@ public class CameraMove : MonoBehaviour
 
         exceptionRangeVal = 0.4f;
 
-        offset = new Vector3(0f, 10f, 0f);
+        deadOffset = new Vector3(0f, 10f, 0f);
+        deadRotate = Quaternion.Euler(-90f, 0f, 0f);
 
         isWallChk = false;
         isShake = false;
@@ -69,8 +71,16 @@ public class CameraMove : MonoBehaviour
 
     private void LateUpdate()
     {
-                
-        CameraMoveOne();
+        if(PlayerManager.Instance.player.isDead == true)
+        {
+            DeadCameraMove();
+        }
+        else
+        {
+            CameraMoveOne();
+
+        }
+        
     }
 
 
@@ -132,6 +142,8 @@ public class CameraMove : MonoBehaviour
     //! 플레이어가 죽으면 작동하는 함수
     public void DeadCameraMove()
     {
+        gameObject.transform.localPosition = deadOffset;
+        gameObject.transform.rotation = deadRotate;
 
     }
 

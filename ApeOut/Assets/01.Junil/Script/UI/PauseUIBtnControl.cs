@@ -35,6 +35,8 @@ public class PauseUIBtnControl : MonoBehaviour
 
         GFunc.Log("게임 재 시작");
         GFunc.LoadScene(RDefine.PLAY_SCENE);
+        UIManager.Instance.OnOffPauseUI();
+        
 
 
     }

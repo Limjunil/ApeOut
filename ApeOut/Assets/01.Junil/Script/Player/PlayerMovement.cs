@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         playerRigid = gameObject.GetComponent<Rigidbody>();
-        playerMoveSpeed = 6;
+        playerMoveSpeed = 8f;
     }
 
 

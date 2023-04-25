@@ -60,7 +60,7 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         // 죽으면 정지
-        if(isDead == true)
+        if(isDead == true || UIManager.Instance.isOpenPause == true)
         {
             return;
         }
