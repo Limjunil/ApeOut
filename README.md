@@ -21,7 +21,8 @@ Make a ApeOut Game Project
 23/04/21 - Add TMP Text shake effect and proto Album Select    
 23/04/24 - Fix Option    
 23/04/24 - Make Album Stage    
-23/04/25 -     
+23/04/25 - Add proto DeadUI    
+23/04/25 - Make DeadUI    
 
 
 ## [YMG]
