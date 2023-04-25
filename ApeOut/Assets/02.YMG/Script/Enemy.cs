@@ -27,6 +27,8 @@ public class Enemy : EnemyBase
             enemyBulletPack[i].SetActive(false);
         }
 
+        //Insert this code inside Awake()
+        Physics.IgnoreCollision(GetComponent<CapsuleCollider>(), GetComponentsInChildren<CapsuleCollider>()[1]);
     }
 
     private void FixedUpdate()

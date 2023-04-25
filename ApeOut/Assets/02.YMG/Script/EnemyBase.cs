@@ -73,8 +73,8 @@ public class EnemyBase : MonoBehaviour
         //부모에서 작동할 내용
         Agent = GetComponent<NavMeshAgent>();
         Anim = GetComponent<Animator>();
-        //Target = GameObject.FindGameObjectWithTag("Player").transform;
-        Target = PlayerManager.Instance.player.transform;
+        Target = GameObject.FindGameObjectWithTag("Player").transform;
+        //Target = PlayerManager.Instance.player.transform;
 
         UpdateDestination();
     }

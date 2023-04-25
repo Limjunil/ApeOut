@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 634666727205505801}
   - component: {fileID: 2624333887364859296}
   - component: {fileID: 6235062504135765450}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Window
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!4 &5344109954657537873
 Transform:
@@ -123,12 +123,12 @@ GameObject:
   - component: {fileID: 6391715666945484873}
   - component: {fileID: 3510797068373112016}
   - component: {fileID: 7878152185008614319}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Window
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!4 &1294858896320138172
 Transform:
@@ -234,13 +234,13 @@ GameObject:
   - component: {fileID: 3403344651179865199}
   - component: {fileID: 1400126425032526686}
   - component: {fileID: 9104335805441345633}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Window
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 0
 --- !u!4 &877256235071348857
 Transform:
   m_ObjectHideFlags: 0
@@ -365,12 +365,12 @@ GameObject:
   - component: {fileID: 8553766122245558367}
   - component: {fileID: 1265629263194099785}
   - component: {fileID: 2651126298288285948}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!4 &5342628621522294504
 Transform:
@@ -474,13 +474,12 @@ GameObject:
   - component: {fileID: 7301633568615891766}
   - component: {fileID: 7301633568615891767}
   - component: {fileID: 7301633568615891768}
-  - component: {fileID: 8347842363155429776}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightWallDoor
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633568615891769
 Transform:
@@ -525,7 +524,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: afe738c0329300147b1df1a58cbe3c74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -560,18 +559,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8347842363155429776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7301633568615891770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73d134ff33087ee4d9015e737d23de66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7301633568702172863
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,12 +568,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7301633568702172862}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DownObjs
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633568702172862
 Transform:
@@ -619,13 +606,12 @@ GameObject:
   - component: {fileID: 7301633568900269008}
   - component: {fileID: 7301633568900269009}
   - component: {fileID: 7301633568900269010}
-  - component: {fileID: 7030055582129988386}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftWallDoor
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633568900269011
 Transform:
@@ -670,7 +656,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: afe738c0329300147b1df1a58cbe3c74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -705,18 +691,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7030055582129988386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7301633568900269012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73d134ff33087ee4d9015e737d23de66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7301633569016298184
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,12 +703,12 @@ GameObject:
   - component: {fileID: 7301633569016298180}
   - component: {fileID: 7301633569016298181}
   - component: {fileID: 7301633569016298182}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightWallOne
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633569016298183
 Transform:
@@ -826,12 +800,12 @@ GameObject:
   - component: {fileID: 7301633569219856862}
   - component: {fileID: 7301633569219856863}
   - component: {fileID: 7301633569219856800}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightWallTwo
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633569219856801
 Transform:
@@ -923,12 +897,12 @@ GameObject:
   - component: {fileID: 7301633569296354468}
   - component: {fileID: 7301633569296354469}
   - component: {fileID: 7301633569296354470}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftWallTwo
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633569296354471
 Transform:
@@ -1020,12 +994,12 @@ GameObject:
   - component: {fileID: 7301633569339989507}
   - component: {fileID: 7301633569339989508}
   - component: {fileID: 7301633569339989509}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftWallOne
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633569339989510
 Transform:
@@ -1117,12 +1091,12 @@ GameObject:
   - component: {fileID: 7301633569433112398}
   - component: {fileID: 7301633569433112399}
   - component: {fileID: 7301633569433112400}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DownWallTwo
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633569433112401
 Transform:
@@ -1214,12 +1188,12 @@ GameObject:
   - component: {fileID: 7301633569483518034}
   - component: {fileID: 7301633569483518035}
   - component: {fileID: 7301633569483518036}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!4 &7301633569483518037
 Transform:
@@ -1309,12 +1283,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7301633569533791868}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightObjs
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633569533791868
 Transform:
@@ -1347,12 +1321,12 @@ GameObject:
   - component: {fileID: 7301633569570627796}
   - component: {fileID: 7301633569570627797}
   - component: {fileID: 7301633569570627798}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DownWallOne
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633569570627799
 Transform:
@@ -1444,13 +1418,12 @@ GameObject:
   - component: {fileID: 7301633569638616305}
   - component: {fileID: 7301633569638616306}
   - component: {fileID: 7301633569638616307}
-  - component: {fileID: 5917288958609184670}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DownWallDoor
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633569638616308
 Transform:
@@ -1495,7 +1468,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: afe738c0329300147b1df1a58cbe3c74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1530,18 +1503,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5917288958609184670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7301633569638616309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73d134ff33087ee4d9015e737d23de66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7301633569660571999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,12 +1512,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7301633569660571998}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UpObjs
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633569660571998
 Transform:
@@ -1586,12 +1547,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7301633570144941571}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BaseMapOne
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633570144941571
 Transform:
@@ -1626,12 +1587,12 @@ GameObject:
   - component: {fileID: 7301633570228090416}
   - component: {fileID: 7301633570228090417}
   - component: {fileID: 7301633570228090418}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UpWallTwo
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633570228090419
 Transform:
@@ -1723,12 +1684,12 @@ GameObject:
   - component: {fileID: 7301633570288153393}
   - component: {fileID: 7301633570288153394}
   - component: {fileID: 7301633570288153395}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2sizeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633570288153396
 Transform:
@@ -1821,12 +1782,12 @@ GameObject:
   - component: {fileID: 7301633570516307181}
   - component: {fileID: 7301633570516307182}
   - component: {fileID: 7301633570516307183}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UpWallOne
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633570516307184
 Transform:
@@ -1918,13 +1879,12 @@ GameObject:
   - component: {fileID: 7301633570633154030}
   - component: {fileID: 7301633570633154031}
   - component: {fileID: 7301633570633154032}
-  - component: {fileID: 1726043533649647517}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UpWallDoor
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633570633154033
 Transform:
@@ -1969,7 +1929,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: afe738c0329300147b1df1a58cbe3c74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2004,18 +1964,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1726043533649647517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7301633570633154034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73d134ff33087ee4d9015e737d23de66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7301633570722714788
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,12 +1973,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7301633570722714787}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftObjs
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7301633570722714787
 Transform:
