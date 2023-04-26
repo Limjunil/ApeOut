@@ -15,7 +15,7 @@ public class TestPlayer : MonoBehaviour
     void Awake()
     {
         //Insert this code inside Awake()
-        Physics.IgnoreCollision(GetComponent<CapsuleCollider>(), GetComponentsInChildren<CapsuleCollider>()[1]);
+        //Physics.IgnoreCollision(GetComponent<CapsuleCollider>(), GetComponentsInChildren<CapsuleCollider>()[1]);
     }
 
     void Start()

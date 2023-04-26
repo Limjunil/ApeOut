@@ -11,7 +11,7 @@ public class EnemyBase : MonoBehaviour
     public Vector3 targetVector3;
 
     public GameObject explosionEffect;
-    bool hasExploded = false;
+    bool isHasExploded = false;
 
     public int enemyHp = default;
     public int enemyAtk = default;
@@ -44,6 +44,9 @@ public class EnemyBase : MonoBehaviour
     public float spawnRate;
 
     public bool isHold = false;
+    public bool isHitPlayer = false;
+
+    public Rigidbody enemyRigid = default;
 
     public enum State
     {
@@ -285,13 +288,13 @@ public class EnemyBase : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) // Death
     {
-        if (collision.collider.CompareTag("Wall"))
+        if (collision.collider.CompareTag("Wall") && isHitPlayer == true)
         {
             // Explosion
-            if (!hasExploded)
+            if (!isHasExploded)
             {
                 Instantiate(explosionEffect, transform.position, transform.rotation);
-                hasExploded = true;
+                isHasExploded = true;
             }
 
             // Object
@@ -358,6 +361,19 @@ public class EnemyBase : MonoBehaviour
 
     }
 
+    public virtual void StopForce()
+    {
+        StartCoroutine(StopEnemy());
+    }
+
+    IEnumerator StopEnemy()
+    {
+        isHitPlayer = true;
+        yield return new WaitForSeconds(1f);
+        enemyRigid.velocity = Vector3.zero;
+        isHitPlayer = false;
+
+    }
 
 
 }

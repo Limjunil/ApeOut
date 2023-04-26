@@ -9,6 +9,18 @@ public class Enemy : EnemyBase
 
     public int chkBullet = 0;
 
+    
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
+    private void OnEnable()
+    {
+        isHitPlayer = false;
+
+    }
 
     public override void Awake()
     {
@@ -19,6 +31,7 @@ public class Enemy : EnemyBase
         enemyBulleyVal = 30;
         enemyBulletPack = new GameObject[enemyBulleyVal];
         chkBullet = 0;
+        isHitPlayer = false;
 
         for (int i = 0; i < enemyBulleyVal; i++)
         {
@@ -28,7 +41,9 @@ public class Enemy : EnemyBase
         }
 
         //Insert this code inside Awake()
-        Physics.IgnoreCollision(GetComponent<CapsuleCollider>(), GetComponentsInChildren<CapsuleCollider>()[1]);
+        //Physics.IgnoreCollision(GetComponent<CapsuleCollider>(), GetComponentsInChildren<CapsuleCollider>()[1]);
+
+        enemyRigid = gameObject.GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -129,4 +144,6 @@ public class Enemy : EnemyBase
 
         return false;
     }
+
+
 }
