@@ -65,7 +65,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 66048
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -169,8 +169,8 @@ Camera:
   m_GameObject: {fileID: 2346576186343882681}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.21, g: 0.21, b: 0.21, a: 1}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -191,7 +191,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 439
+    m_Bits: 1463
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -273,6 +273,13 @@ MonoBehaviour:
   cameraWidth: 0
   targetPlayer: {fileID: 0}
   nowTarget: {x: 0, y: 0, z: 0}
-  offset: {x: 0, y: 0, z: 0}
+  deadOffset: {x: 0, y: 0, z: 0}
+  deadRotate: {x: 0, y: 0, z: 0, w: 0}
+  addPlusX: 0
+  addPlusZ: 0
   exceptionRangeVal: 0
   isWallChk: 0
+  isShake: 0
+  shakeX: 0
+  shakeZ: 0
+  shakeForce: 0

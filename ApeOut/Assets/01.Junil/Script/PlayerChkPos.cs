@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerChkPos : MonoBehaviour
@@ -9,39 +10,56 @@ public class PlayerChkPos : MonoBehaviour
 
     int setPosCnt = 0;
 
-    public bool isDead = false;
+
+    private void OnDisable()
+    {
+        StopPlayerChk();
+
+    }
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            ViewPlayerWay();
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         playerChkPos = gameObject.GetComponent<LineRenderer>();
 
-        setPosCnt = 0;
-
-        isDead = false;
-
-        playerChkPos.enabled = false;
-
         StartPlayerChk();
 
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    public void ViewPlayerWay()
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            playerChkPos.enabled = true;
-            isDead = true;
-            StopPlayerChk();
 
-        }
+        StopPlayerChk();
+
+        playerChkPos.positionCount = setPosCnt + 1;
+
+        Vector3 playerPos_ = PlayerManager.Instance.player.transform.position;
+
+        playerChkPos.SetPosition(setPosCnt, playerPos_);
+
+        playerChkPos.enabled = true;
     }
 
     IEnumerator SetPlayerChk = default;
 
     public void StartPlayerChk()
     {
+        playerChkPos.positionCount = 0;
+
+        setPosCnt = 0;
+
+        playerChkPos.enabled = false;
+
         SetPlayerChk = StartChkPlayerPos();
 
         StartCoroutine(SetPlayerChk);
@@ -58,13 +76,11 @@ public class PlayerChkPos : MonoBehaviour
 
     public IEnumerator StartChkPlayerPos()
     {
-        while (isDead == false)
+        while (true)
         {
             playerChkPos.positionCount = setPosCnt + 1;
 
             Vector3 playerPos_ = PlayerManager.Instance.player.transform.position;
-
-            //playerPos_.y += 1f;
 
             playerChkPos.SetPosition(setPosCnt, playerPos_);
 

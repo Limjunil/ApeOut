@@ -115,6 +115,17 @@ public class UIManager : GSingleton<UIManager>
         }
     }
 
+
+    public void DeadUICall()
+    {
+        deadUIObj.transform.localScale = Vector3.one;
+        PauseUIControl.Instance.pauseUIObj.transform.localScale = new Vector3(0.0001f, 0.0001f, 0.0001f);
+        PlayerManager.Instance.player.playerHPUIObj.transform.localScale = new Vector3(0.0001f, 0.0001f, 0.0001f);
+
+        playerChkPos.ViewPlayerWay();
+    }
+
+
     public void ChangeBearPos(bool isAlbum_)
     {
         if(isAlbum_ == false)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-
+    
     public const float SPEED_CAMERA = 6f;
 
     public float cameraHeight = default;
@@ -64,6 +64,9 @@ public class CameraMove : MonoBehaviour
         shakeForce = PlayerPrefs.GetInt("shakeForce");
 
         gameObject.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+
+        Camera.main.backgroundColor = Color.white;
+
         GetTargetPlayer();
     }
 
@@ -73,14 +76,11 @@ public class CameraMove : MonoBehaviour
     {
         if(PlayerManager.Instance.player.isDead == true)
         {
-            DeadCameraMove();
+            return;
         }
-        else
-        {
-            CameraMoveOne();
 
-        }
-        
+        CameraMoveOne();
+
     }
 
 
@@ -142,8 +142,26 @@ public class CameraMove : MonoBehaviour
     //! 플레이어가 죽으면 작동하는 함수
     public void DeadCameraMove()
     {
-        gameObject.transform.localPosition = deadOffset;
+        StartCoroutine(DeadCamera());
+    }
+
+    IEnumerator DeadCamera()
+    {
+        for(int i = 0; i < 2; i++)
+        {
+            Vector3 temp_ = gameObject.transform.position;
+            temp_.y += 10f;
+
+            gameObject.transform.position = temp_;
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        gameObject.transform.position = deadOffset;
         gameObject.transform.rotation = deadRotate;
+        Camera.main.backgroundColor = new Color32(200, 60, 60, 255);
+
+        UIManager.Instance.DeadUICall();
 
     }
 

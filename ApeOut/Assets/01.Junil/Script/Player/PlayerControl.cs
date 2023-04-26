@@ -26,6 +26,8 @@ public class PlayerControl : MonoBehaviour
     public bool isDead = false;
     // } [Junil] 플레이어 스탯
 
+    public GameObject playerHPUIObj = default; 
+
 
     private void Awake()
     {
@@ -40,9 +42,9 @@ public class PlayerControl : MonoBehaviour
 
         GameObject gameUIObjs_ = GFunc.GetRootObj("GameUIView");
 
-        GameObject playerHPUI_ = gameUIObjs_.transform.GetChild(1).gameObject;
+        playerHPUIObj = gameUIObjs_.transform.GetChild(1).gameObject;
 
-        playerHpbar = playerHPUI_.transform.GetChild(0).gameObject.GetComponent<Image>();
+        playerHpbar = playerHPUIObj.transform.GetChild(0).gameObject.GetComponent<Image>();
 
         playerHp = 3;
         playerHpMax = playerHp;
@@ -92,7 +94,9 @@ public class PlayerControl : MonoBehaviour
             if (playerAttack.isGrabChk == false && isFirstHold == false)
             {
                 playerAttack.OnHold();
-                
+                playerAnimator.SetTrigger("Attack3");
+
+
             }
 
             isFirstHold = true;
@@ -116,6 +120,10 @@ public class PlayerControl : MonoBehaviour
     public void PlayerDie()
     {
         // 플레이어가 죽게 되면 죽는 애니메이션과 죽는 액션의 카메라 호출
+        playerAnimator.SetTrigger("isDead");
+
+        PlayerManager.Instance.mainCamera.DeadCameraMove();
+
     }
 
     public void ViewPlayerHp()
@@ -125,9 +133,10 @@ public class PlayerControl : MonoBehaviour
 
         playerHpbar.fillAmount = hpAmount_;
 
-        if(playerHp <= 0)
+        if (playerHp <= 0 && isDead == false)
         {
             isDead = true;
+            PlayerDie();
         }
     }   // ViewPlayerHp
 
