@@ -104,6 +104,14 @@ Stop Action은 파티클 시스템이 정지한 후의 행동을 설정하는데
             enemyRigid.isKinematic = false;
         }    
     플레이어의 콜라이더가 부딪치는 동안은 isKinematic을 발동시켜 밀려나지 않게하고 움직임도 이상 없음.    
+        
+    문제 2)    
+    라인 렌더러 표현이 제대로 안됨    
+        
+    해결1)    
+    Alignment transform z -> view    
+    Use World Space 체크    
+    
     
     
     
