@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProjectileTest : MonoBehaviour
 {
     public int damage = 10;
-    public float speed = 8f;
+    public float speed = 10f;
     private Rigidbody bulletRigidbody;
 
     private void OnDisable()
