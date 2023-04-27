@@ -89,5 +89,22 @@ Stop Action은 파티클 시스템이 정지한 후의 행동을 설정하는데
     몬스터 부모 클래스에 리지드바디.velocity = Vector3.zero; 가 1초 뒤에 실행하는 코루틴과 이를 포함하는 함수를 만든 뒤    
     플레이어가 공격 할 때 호출하여 몬스터가 받는 물리현상을 구현했다.    
     덤으로 마찰력을 만들어주는 Physic Material 과 무게를 나타내는 NavMesh의 Mass 도 사용해봤다.    
+        
+04/27    
+    몬스터 밀려나는 오류    
+    몬스터와 플레이어가 부딪치면 밀려나는 현상이 제대로 해결이 안됨    
+        
+    해결 1)    
+    벽에 부딪치면 죽게만든 기능인 void OnCollisionEnter(Collision collision) 에 새로운 기능 추가    
+    if (collision.collider.CompareTag("Player") 
+        {
+            Debug.Log("Player");
+            enemyRigid.velocity = Vector3.zero;
+            enemyRigid.isKinematic = true;
+            enemyRigid.isKinematic = false;
+        }    
+    플레이어의 콜라이더가 부딪치는 동안은 isKinematic을 발동시켜 밀려나지 않게하고 움직임도 이상 없음.    
+    
+    
     
     
