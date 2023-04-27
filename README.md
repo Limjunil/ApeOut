@@ -24,6 +24,7 @@ Make a ApeOut Game Project
 23/04/25 - Add proto DeadUI    
 23/04/25 - Make DeadUI    
 23/04/26 - Make Runtime NavBake and DeadUI func    
+23/04/27 - Make LoadUI and LoadScene    
 
 
 ## [YMG]
