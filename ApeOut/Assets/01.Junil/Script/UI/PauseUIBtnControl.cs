@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Rendering.Universal;
 
 public class PauseUIBtnControl : MonoBehaviour
 {
@@ -46,6 +47,6 @@ public class PauseUIBtnControl : MonoBehaviour
     {
         
         GFunc.Log("타이틀로 돌아가기");
-        GFunc.LoadScene(RDefine.TITLE_SCENE);
+        UIManager.Instance.Retitle();
     }
 }

@@ -37,7 +37,8 @@ public class TitleAlbumBtn : MonoBehaviour
 
     public void ClickGameStart()
     {
-        GFunc.LoadScene(RDefine.PLAY_SCENE);
+        //GFunc.LoadScene(RDefine.PLAY_SCENE);
+        LoadingSceneControl.LoadSceneScene(RDefine.PLAY_SCENE);
     }
 
     public void CloseAlbum()

@@ -64,17 +64,25 @@ public class PauseUIControl : GSingleton<PauseUIControl>
     //! 일시정지 메뉴를 여는 함수
     public void OpenPauseMenu()
     {
-        FirstOpenPauseMenu();
+        if(UIManager.Instance.isOpenPause == true)
+        {
+            FirstOpenPauseMenu();
 
-        pauseUIObj.transform.localScale = Vector3.one;
+            pauseUIObj.transform.localScale = Vector3.one;
+        }
+        else
+        {
+            pauseUIObj.transform.localScale = new Vector3(0.0001f, 0.0001f, 0.0001f);
+
+        }
 
     }
 
-    //! 일시정지 메뉴를 종료하는 함수
-    public void OffPauseMenu()
-    {
-        pauseUIObj.transform.localScale = new Vector3(0.0001f, 0.0001f, 0.0001f);
-    }
+    ////! 일시정지 메뉴를 종료하는 함수
+    //public void OffPauseMenu()
+    //{
+    //    pauseUIObj.transform.localScale = new Vector3(0.0001f, 0.0001f, 0.0001f);
+    //}
 
 
     //! 일시정지 메뉴의 초기 값 설정

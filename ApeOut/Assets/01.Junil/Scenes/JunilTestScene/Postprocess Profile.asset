@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   threshold:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.9
   intensity:
     m_OverrideState: 0
@@ -35,12 +35,12 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 16
   dirtTexture:
-    m_OverrideState: 0
-    m_Value: {fileID: 0}
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 7622f1ab6d84d6249b4fa3404298b5f2, type: 3}
     dimension: 1
   dirtIntensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 5
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,26 +56,7 @@ MonoBehaviour:
   components:
   - {fileID: 4339096306984340794}
   - {fileID: -3521185065978305236}
-  - {fileID: 1401031279943088916}
---- !u!114 &1401031279943088916
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
-  m_Name: WhiteBalance
-  m_EditorClassIdentifier: 
-  active: 1
-  temperature:
-    m_OverrideState: 0
-    m_Value: 100
-  tint:
-    m_OverrideState: 0
-    m_Value: 100
+  - {fileID: 6658235983798979927}
 --- !u!114 &4339096306984340794
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -102,5 +83,21 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 0
   saturation:
+    m_OverrideState: 1
+    m_Value: -10
+--- !u!114 &6658235983798979927
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
     m_OverrideState: 1
     m_Value: 0

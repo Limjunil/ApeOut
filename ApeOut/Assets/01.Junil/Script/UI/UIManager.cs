@@ -28,6 +28,8 @@ public class UIManager : GSingleton<UIManager>
 
     public GameObject deadUIObj = default;
 
+    public PostproControl postProControl = default;
+
 
     protected override void Init()
     {
@@ -40,7 +42,6 @@ public class UIManager : GSingleton<UIManager>
         base.Start();
 
         SceneManager.sceneLoaded += LoadedsceneEvent;
-
         Scene scene_ = SceneManager.GetActiveScene();
 
         OnUIManagerSet(scene_);
@@ -60,13 +61,15 @@ public class UIManager : GSingleton<UIManager>
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             // 현재 씬이 타이틀
-            if (sceneNameNow == RDefine.TITLE_SCENE)
+            if (sceneNameNow == RDefine.PLAY_SCENE)
             {
-                ChangeAlbumToTitle();
+                OnOffPauseUI();
+
             }
             else
             {
-                OnOffPauseUI();
+                ChangeAlbumToTitle();
+
             }
 
         }
@@ -81,7 +84,9 @@ public class UIManager : GSingleton<UIManager>
 
         isAlbum = false;
 
-        if (scene_.name == RDefine.TITLE_SCENE)
+        sceneNameNow = scene_.name;
+
+        if (sceneNameNow == RDefine.TITLE_SCENE)
         {
 
 
@@ -112,6 +117,11 @@ public class UIManager : GSingleton<UIManager>
 
             deadUIObj = gameUIObj_.transform.GetChild(2).gameObject;
             deadUIObj.transform.localScale = new Vector3(0.0001f, 0.0001f, 0.0001f);
+
+            GameObject postProcess_ = GFunc.GetRootObj("Postprocess");
+
+            postProControl = postProcess_.GetComponent<PostproControl>();
+
         }
     }
 
@@ -170,7 +180,14 @@ public class UIManager : GSingleton<UIManager>
         }
     }
 
-    
+    public void Retitle()
+    {
+        Time.timeScale = 1;
+
+        LoadingSceneControl.LoadSceneScene(RDefine.TITLE_SCENE);
+    }
+
+
     //! 일시정지 메뉴를 키고 끌 수 있는 함수
     public void OnOffPauseUI()
     {
@@ -178,15 +195,17 @@ public class UIManager : GSingleton<UIManager>
         {
             isOpenPause = true;
             Time.timeScale = 0;
-            PauseUIControl.Instance.OpenPauseMenu();
         }
         else if (isOpenPause == true)
         {
             isOpenPause = false;
             Time.timeScale = 1;
-            PauseUIControl.Instance.OffPauseMenu();
 
         }
+
+        postProControl.PauseEffect();
+        PauseUIControl.Instance.OpenPauseMenu();
+
     }
 
     IEnumerator ChangeTitleMenu(bool isAlbum)

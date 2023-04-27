@@ -28,7 +28,7 @@ public class PlayerAtkCol : MonoBehaviour
             {
                 GFunc.Log("적 잡았음!");
 
-                other.GetComponent<AITest>().HoldToPlayer();
+                other.GetComponent<EnemyBase>().HoldToPlayer();
             }
         }
     }

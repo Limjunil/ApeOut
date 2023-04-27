@@ -159,7 +159,7 @@ public class CameraMove : MonoBehaviour
 
         gameObject.transform.position = deadOffset;
         gameObject.transform.rotation = deadRotate;
-        Camera.main.backgroundColor = new Color32(200, 60, 60, 255);
+        Camera.main.backgroundColor = new Color32(180, 40, 40, 255);
 
         UIManager.Instance.DeadUICall();
 

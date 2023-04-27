@@ -13,6 +13,7 @@ public class MapManager : MonoBehaviour
 
     public GameObject mapPosObj = default;
 
+    public LoadingUIControl loadUIControl = default;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,13 @@ public class MapManager : MonoBehaviour
         mapPrefabs = Resources.LoadAll<GameObject>("01.Junil/Prefabs/Map");
 
         mapPosObj = GFunc.GetRootObj("MapPosObj");
+
+
+        GameObject gameUIObj_ = GFunc.GetRootObj("GameUIView");
+
+        GameObject loadUIObj_ = gameUIObj_.transform.GetChild(3).gameObject;
+
+        loadUIControl = loadUIObj_.GetComponent<LoadingUIControl>();
 
         GetMapPrefabs();
     }
