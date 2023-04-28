@@ -64,13 +64,7 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void Awake()
     {
-        ////부모에서 작동할 내용
-        //Agent = GetComponent<NavMeshAgent>();
-        //Anim = GetComponent<Animator>();
-        ////Target = GameObject.FindGameObjectWithTag("Player").transform;
-        //Target = PlayerManager.Instance.player.transform;
 
-        //UpdateDestination();
     }
 
     protected virtual void Start()
@@ -295,29 +289,7 @@ public class EnemyBase : MonoBehaviour
 
     }
 
-
-
-    void OnTriEnter(Collider other)
-    {
-        Debug.Log("Enter");
-
-        enemyRigid.velocity = Vector3.zero;
-        enemyRigid.isKinematic = true;
-        enemyRigid.isKinematic = false;
-
-        gameObject.transform.parent = other.gameObject.transform;
-
-    }
-
-    //void OnTriggerExit(Collider other)
-    //{
-
-    //    Debug.Log("Exit");
-    //    enemyRigid.isKinematic = false;
-    //}
-
-
-    private void OnCollisionEnter(Collision collision) // Death
+    public virtual void OnCollisionEnter(Collision collision) // Death
     {
         if (collision.collider.CompareTag(RDefine.PLAYER_TAG)) 
         {

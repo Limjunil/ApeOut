@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5814628360180874427
 Transform:
   m_ObjectHideFlags: 0
@@ -238,9 +238,9 @@ MonoBehaviour:
   ObstacleMask:
     serializedVersion: 2
     m_Bits: 1024
-  viewAngle: 0
-  maxAngle: 0
-  maxRadius: 0
+  viewAngle: 90
+  maxAngle: 45
+  maxRadius: 12
   isInFOV: 0
   isAim: 0
   isEnemy: 0

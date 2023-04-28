@@ -9,11 +9,15 @@ public class EnemyBoomer : EnemyBase
 
     public int chkBullet = 0;
 
-    //LineRenderer laserLine; //
-    //public Transform laserOrigin; //
-
-    //private LineRenderer lR; //
     public Transform startPoint; //
+
+    public float time = 5f;
+    public float zero = 0;
+    public float launchVelocity = 5f; // 투척 힘
+    public GameObject projectile; // 던질 폭탄
+    public GameObject deathBomb;
+
+    private bool isbomb = true; // 폭탄 관리
 
     private void OnDisable()
     {
@@ -37,11 +41,6 @@ public class EnemyBoomer : EnemyBase
         chkBullet = 0;
 
         enemyRigid = gameObject.GetComponent<Rigidbody>();
-
-        //laserLine = GetComponent<LineRenderer>(); //
-        //laserLine.positionCount = 2; //
-
-        //lR = GetComponent<LineRenderer>(); ///
 
         for (int i = 0; i < enemyBulleyVal; i++)
         {
@@ -90,89 +89,62 @@ public class EnemyBoomer : EnemyBase
 
     }
 
-
-    //public override void Shot()
-    //{
-    //    base.Shot();
-    //    //Agent.velocity = Vector3.zero;
-
-    //    // 최근 생성 시점에서부터 누적된 시간이 생성 주기보다 크거나 같다면
-    //    if (timeAfterSpawn >= spawnRate)
-    //    {
-    //        // 누적된 시간을 리셋
-    //        timeAfterSpawn = 0f;
-    //        //GameObject bullet = Instantiate(bulletPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
-
-    //        enemyBulletPack[chkBullet].transform.localPosition = spawnPoint.transform.position;
-
-    //        enemyBulletPack[chkBullet].transform.localRotation = spawnPoint.transform.rotation;
-
-    //        //laserLine.SetPosition(0, laserOrigin.position);
-    //        //laserLine.SetPosition(1, transform.forward * 20 + transform.position);
-
-    //        //enemyBulletPack[chkBullet].transform.LookAt(Target);
-    //        enemyBulletPack[chkBullet].transform.LookAt(Target);
-
-
-    //        enemyBulletPack[chkBullet].SetActive(true);
-
-    //        spawnRate = AttackAnime.length;
-
-    //        chkBullet++;
-
-    //        if(enemyBulleyVal <= chkBullet)
-    //        {
-    //            chkBullet = 0;
-    //        }
-    //    }
-
-    //}
+    public override void OnCollisionEnter(Collision collision)
+    {
+        Instantiate(deathBomb, transform.position, transform.rotation);
+    }
 
     public override void Shot()
     {
         base.Shot();
+        //Agent.velocity = Vector3.zero;
+
         // 최근 생성 시점에서부터 누적된 시간이 생성 주기보다 크거나 같다면
         if (timeAfterSpawn >= spawnRate)
         {
             // 누적된 시간을 리셋
             timeAfterSpawn = 0f;
-            lR.enabled = true;
+            //GameObject bullet = Instantiate(bulletPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
 
-            lR.SetPosition(0, startPoint.position);
-            RaycastHit hit;
-            if (Physics.Raycast(startPoint.position, transform.forward, out hit))
+            enemyBulletPack[chkBullet].transform.localPosition = spawnPoint.transform.position;
+
+            enemyBulletPack[chkBullet].transform.localRotation = spawnPoint.transform.rotation;
+
+            //laserLine.SetPosition(0, laserOrigin.position);
+            //laserLine.SetPosition(1, transform.forward * 20 + transform.position);
+
+            //enemyBulletPack[chkBullet].transform.LookAt(Target);
+            enemyBulletPack[chkBullet].transform.LookAt(Target);
+
+
+            enemyBulletPack[chkBullet].SetActive(true);
+
+            spawnRate = AttackAnime.length;
+
+            chkBullet++;
+
+            if (enemyBulleyVal <= chkBullet)
             {
-                lR.SetPosition(1, hit.point);
-                if (hit.collider)
-                {
-                    lR.SetPosition(1, hit.point);
-                }
-                if (hit.transform.tag == "Player")
-                {
-                    Debug.Log("Player");
-                    //Destroy(hit.transform.gameObject);
-                }
+                chkBullet = 0;
             }
-            else { lR.SetPosition(1, transform.forward * 50); }
-
-            //if (timeAfterSpawn >= 1f)
-            //{
-
-            //if (state != State.Engage)
-            //{
-
-            //    lR.enabled = false;
-            //}
-            //}
-
-
-            //if (lR.enabled)
-            //    CreatePoints();
-
-            //lR.gameObject.SetActive(false);
         }
-        
+
+        //! 일정 시간이 지나면 폭탄 투척
+        time -= 1 * Time.deltaTime;
+        if (time <= zero)
+        {
+            if (isbomb) // 폭탄은 1개
+            {
+                isbomb = false;
+                // 생성 오브젝트, 발사 위치
+                var _projectile = Instantiate(projectile, spawnPoint.position, spawnPoint.rotation);
+                // 생성 정면 * 힘
+                _projectile.GetComponent<Rigidbody>().velocity = spawnPoint.forward * launchVelocity;
+            }
+        }
+
     }
+
 
 
     public static bool InFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius) //! 기즈모 레이

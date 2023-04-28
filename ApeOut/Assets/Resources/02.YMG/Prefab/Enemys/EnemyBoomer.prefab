@@ -269,9 +269,9 @@ MonoBehaviour:
   ObstacleMask:
     serializedVersion: 2
     m_Bits: 1024
-  viewAngle: 0
-  maxAngle: 0
-  maxRadius: 0
+  viewAngle: 90
+  maxAngle: 45
+  maxRadius: 12
   isInFOV: 0
   isAim: 0
   isEnemy: 0
