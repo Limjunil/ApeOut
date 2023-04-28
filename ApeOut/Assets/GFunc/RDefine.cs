@@ -16,8 +16,9 @@ public static class RDefine
 
     //public const string PLAY_SCENE = "JunilTestScene";
 
-    public const string PLAY_SCENE = "02.PlayScene";
+    //public const string PLAY_SCENE = "02.PlayScene";
 
+    public const string PLAY_SCENE = "YMGTestScene";
 
     public const string LOADING_SCENE = "03.LoadingScene";
 

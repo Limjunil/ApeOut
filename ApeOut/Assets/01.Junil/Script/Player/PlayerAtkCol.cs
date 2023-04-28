@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PlayerAtkCol : MonoBehaviour
 {
-    private const float PUNCH_FORCE = 20f;
+    [SerializeField] 
+    private const float PUNCH_FORCE = 15f;
 
     //! 공격 콜라이더에 충돌하면 발생
     public void OnTriggerEnter(Collider other)
@@ -37,4 +38,6 @@ public class PlayerAtkCol : MonoBehaviour
             }
         }
     }
+
+    
 }

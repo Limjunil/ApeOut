@@ -21,7 +21,10 @@ Make a ApeOut Game Project
 23/04/21 - Add TMP Text shake effect and proto Album Select    
 23/04/24 - Fix Option    
 23/04/24 - Make Album Stage    
-23/04/25 -     
+23/04/25 - Add proto DeadUI    
+23/04/25 - Make DeadUI    
+23/04/26 - Make Runtime NavBake and DeadUI func    
+23/04/27 - Make LoadUI and LoadScene    
 
 
 ## [YMG]
@@ -67,5 +70,51 @@ Stop Action은 파티클 시스템이 정지한 후의 행동을 설정하는데
     
 04/24
 
-04/25
+04/25    
+    몬스터 무차별 파괴 현상    
+    원작에 따라서 몬스터를 밀쳐 벽에 부딯치면 파괴되는 기능을 OnCollisionEnter(Collision collision)으로    
+    구현해놓았었는데 몬스터가 플레이어에게 이동하는 도중 벽에 부딪치면 똑같이 파괴되는 현상을 확인.    
+        
+    해결 1)    
+    bool 변수 하나를 만들어서 몬스터의 리지드바디를 포함하는 함수에 넣는다.    
+    플레이어가 공격 할 때에만 true가 된 상태에서 부딪칠 때만 파괴되게 하여 해결했다.        
+    
 
+04/26    
+    몬스터 밀림 현상    
+    플레이어와 몬스터가 충돌할 시 밀림 현상으로 인해 Navmesh 정상작동 안함    
+    플레이어가 몬스터를 미는 방식은 AddForce 방식인데 이 힘이 끝나지 않고 계속 이어지는 것을 알아냄.    
+        
+    해결 1)    
+    몬스터 부모 클래스에 리지드바디.velocity = Vector3.zero; 가 1초 뒤에 실행하는 코루틴과 이를 포함하는 함수를 만든 뒤    
+    플레이어가 공격 할 때 호출하여 몬스터가 받는 물리현상을 구현했다.    
+    덤으로 마찰력을 만들어주는 Physic Material 과 무게를 나타내는 NavMesh의 Mass 도 사용해봤다.    
+        
+04/27    
+    몬스터 밀려나는 오류    
+    몬스터와 플레이어가 부딪치면 밀려나는 현상이 제대로 해결이 안됨    
+        
+    해결 1)    
+    벽에 부딪치면 죽게만든 기능인 void OnCollisionEnter(Collision collision) 에 새로운 기능 추가    
+    if (collision.collider.CompareTag("Player") 
+        {
+            Debug.Log("Player");
+            enemyRigid.velocity = Vector3.zero;
+            enemyRigid.isKinematic = true;
+            enemyRigid.isKinematic = false;
+        }    
+    플레이어의 콜라이더가 부딪치는 동안은 isKinematic을 발동시켜 밀려나지 않게하고 움직임도 이상 없음.    
+        
+    문제 2)    
+    라인 렌더러 표현이 제대로 안됨    
+        
+    해결1)    
+    Alignment transform z -> view    
+    Use World Space 체크    
+    
+
+    
+    
+    
+    
+    

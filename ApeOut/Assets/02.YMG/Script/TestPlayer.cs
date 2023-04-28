@@ -12,6 +12,12 @@ public class TestPlayer : MonoBehaviour
     Vector3 velocity;
     float rotDegree;
 
+    void Awake()
+    {
+        //Insert this code inside Awake()
+        //Physics.IgnoreCollision(GetComponent<CapsuleCollider>(), GetComponentsInChildren<CapsuleCollider>()[1]);
+    }
+
     void Start()
     {
         rig = transform.GetComponent<Rigidbody>();

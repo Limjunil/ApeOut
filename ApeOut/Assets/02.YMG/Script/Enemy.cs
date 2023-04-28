@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class Enemy : EnemyBase
 {
-    public int enemyBulleyVal = 30;
-    public GameObject[] enemyBulletPack = default;
+    public int magazine = 30;
+    public GameObject[] bulletPack = default;
 
     public int chkBullet = 0;
 
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
+    private void OnEnable()
+    {
+        isHitPlayer = false;
+
+    }
 
     public override void Awake()
     {
@@ -16,46 +26,56 @@ public class Enemy : EnemyBase
         //자식에서 추가로 동작할 내용
 
         spawnRate = AttackAnime.length;
-        enemyBulleyVal = 30;
-        enemyBulletPack = new GameObject[enemyBulleyVal];
+        magazine = 30;
+        bulletPack = new GameObject[magazine];
         chkBullet = 0;
+        isHitPlayer = false;
 
-        for (int i = 0; i < enemyBulleyVal; i++)
+        for (int i = 0; i < magazine; i++)
         {
-            enemyBulletPack[i] = Instantiate(bulletPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            bulletPack[i] = Instantiate(bulletPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
 
-            enemyBulletPack[i].SetActive(false);
+            bulletPack[i].SetActive(false);
         }
 
+        //Insert this code inside Awake()
+        //Physics.IgnoreCollision(GetComponent<CapsuleCollider>(), GetComponentsInChildren<CapsuleCollider>()[1]);
+
+        enemyRigid = gameObject.GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
         isInFOV = InFOV(transform, Target, maxAngle, maxRadius);
 
-        if (state == State.Guard)
+        if (state == State.Guard) // || isHold != true
         {
-            //Debug.Log("경계 상태");
+            Debug.Log("경계 상태");
+            Debug.Log(isHold);
             Guard();
         }
         else if (state == State.Action)
         {
-            //Debug.Log("행동 상태");
+            Debug.Log("행동 상태");
             Range();
         }
         else if (state == State.Engage)
         {
-            //Debug.Log("공격 상태");
+            Debug.Log("공격 상태");
             Engage();
         }
         else if (state == State.Move)
         {
-            //Debug.Log("이동 상태");
+            Debug.Log("이동 상태");
             Move();
         }
         else if (state == State.Patrol)
         {
             Patrol();
+        }
+        else if (state == State.hold)
+        {
+            HoldEnemy();
         }
 
     }
@@ -64,6 +84,8 @@ public class Enemy : EnemyBase
     public override void Shot()
     {
         base.Shot();
+        //Agent.velocity = Vector3.zero;
+        //Agent.SetDestination(transform.position);
 
         // 최근 생성 시점에서부터 누적된 시간이 생성 주기보다 크거나 같다면
         if (timeAfterSpawn >= spawnRate)
@@ -73,20 +95,20 @@ public class Enemy : EnemyBase
             //GameObject bullet = Instantiate(bulletPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
 
 
-            enemyBulletPack[chkBullet].transform.localPosition = spawnPoint.transform.position;
+            bulletPack[chkBullet].transform.localPosition = spawnPoint.transform.position;
 
-            enemyBulletPack[chkBullet].transform.localRotation = spawnPoint.transform.rotation;
+            bulletPack[chkBullet].transform.localRotation = spawnPoint.transform.rotation;
 
 
-            enemyBulletPack[chkBullet].transform.LookAt(Target);
+            bulletPack[chkBullet].transform.LookAt(Target);
 
-            enemyBulletPack[chkBullet].SetActive(true);
+            bulletPack[chkBullet].SetActive(true);
 
             spawnRate = AttackAnime.length;
 
             chkBullet++;
 
-            if (enemyBulleyVal <= chkBullet)
+            if (magazine <= chkBullet)
             {
                 chkBullet = 0;
             }
@@ -127,4 +149,6 @@ public class Enemy : EnemyBase
 
         return false;
     }
+
+
 }
