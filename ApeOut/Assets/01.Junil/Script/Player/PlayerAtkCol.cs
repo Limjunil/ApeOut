@@ -22,6 +22,11 @@ public class PlayerAtkCol : MonoBehaviour
                 Rigidbody tempEnemyRigid_ = other.gameObject.GetComponent<Rigidbody>();
 
                 tempEnemyRigid_.AddForce(transform.forward * PUNCH_FORCE, ForceMode.Impulse);
+
+                if(PlayerManager.Instance.player.eventCount < 3)
+                {
+                    UIManager.Instance.OnActionUI(PlayerManager.Instance.player.eventCount);
+                }
             }
 
             if(PlayerManager.Instance.player.playerAttack.isGrabChk == true)

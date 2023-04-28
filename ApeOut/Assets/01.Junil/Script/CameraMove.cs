@@ -40,6 +40,8 @@ public class CameraMove : MonoBehaviour
 
     // } [Junil] 카메라 흔들림 추가
 
+    public bool isEndDeadScene = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +68,8 @@ public class CameraMove : MonoBehaviour
         gameObject.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
 
         Camera.main.backgroundColor = Color.white;
+
+        isEndDeadScene = false;
 
         GetTargetPlayer();
     }
@@ -161,7 +165,11 @@ public class CameraMove : MonoBehaviour
         gameObject.transform.rotation = deadRotate;
         Camera.main.backgroundColor = new Color32(180, 40, 40, 255);
 
+
         UIManager.Instance.DeadUICall();
+
+        yield return new WaitForSeconds(2f);
+        isEndDeadScene = true;
 
     }
 
@@ -221,10 +229,10 @@ public class CameraMove : MonoBehaviour
                 yield break;
             }
 
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.1f);
             //GFunc.Log("흔들림 호출");
 
-            time_ += 0.1f;
+            time_ += 0.2f;
 
             // Random.insideUnitSphere는 범위 1의 크기 랜덤 값을 가짐
 

@@ -28,6 +28,7 @@ public class PlayerControl : MonoBehaviour
 
     public GameObject playerHPUIObj = default; 
 
+    public int eventCount = default;
 
     private void Awake()
     {
@@ -53,6 +54,7 @@ public class PlayerControl : MonoBehaviour
 
         isFirstHold = false;
 
+        eventCount = 0;
 
         playerAnimator.SetTrigger("OnIdle");
     }
@@ -87,6 +89,7 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
+        
 
         if(playerInput.isGrab == true)
         {

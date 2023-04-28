@@ -12,6 +12,7 @@ public class ManagerCall : MonoBehaviour
         TitleMenuControl.Instance.Create();
         OptionUIControl.Instance.Create();
         UIManager.Instance.Create();
+        MapManager.Instance.Create();
 
 
         GFunc.LoadScene(RDefine.TITLE_SCENE);

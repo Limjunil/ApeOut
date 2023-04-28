@@ -35,9 +35,9 @@ public class PauseUIBtnControl : MonoBehaviour
     {
 
         GFunc.Log("게임 재 시작");
-        GFunc.LoadScene(RDefine.PLAY_SCENE);
-        UIManager.Instance.OnOffPauseUI();
-        
+        Time.timeScale = 1;
+        LoadingSceneControl.LoadSceneScene(RDefine.PLAY_SCENE);
+
 
 
     }
@@ -49,4 +49,6 @@ public class PauseUIBtnControl : MonoBehaviour
         GFunc.Log("타이틀로 돌아가기");
         UIManager.Instance.Retitle();
     }
+
+    
 }

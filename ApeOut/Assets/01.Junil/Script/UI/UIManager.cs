@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,6 +31,8 @@ public class UIManager : GSingleton<UIManager>
 
     public PostproControl postProControl = default;
 
+    public GameObject[] actionTxts = new GameObject[3];
+
 
     protected override void Init()
     {
@@ -56,7 +59,23 @@ public class UIManager : GSingleton<UIManager>
     // Update is called once per frame
     public override void Update()
     {
-        
+        if(sceneNameNow == RDefine.PLAY_SCENE)
+        {
+            if (PlayerManager.Instance.player.isDead == true)
+            {
+                if (PlayerManager.Instance.mainCamera.isEndDeadScene == true)
+                {
+                    if (Input.anyKeyDown)
+                    {
+                        Time.timeScale = 1;
+                        LoadingSceneControl.LoadSceneScene(RDefine.PLAY_SCENE);
+                    }
+                }
+
+                return;
+            }
+        }
+
         // 일시정지 메뉴 열고 닫기
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -77,6 +96,32 @@ public class UIManager : GSingleton<UIManager>
 
     }
 
+
+    public void OnActionUI(int countEvent_)
+    {
+        if (3 <= countEvent_) { return; }
+
+        
+        PlayerManager.Instance.mainCamera.isShake = true;
+
+        actionTxts[countEvent_].SetActive(true);
+
+        PlayerManager.Instance.player.eventCount++;
+
+        StartCoroutine(OffActionUI());
+    }
+
+
+    IEnumerator OffActionUI()
+    {
+        yield return new WaitForSeconds(2f);
+
+        for(int i = 0; i < 3; i++)
+        {
+            actionTxts[i].SetActive(false);
+        }
+
+    }
 
     public void OnUIManagerSet(Scene scene_)
     {
@@ -121,6 +166,14 @@ public class UIManager : GSingleton<UIManager>
             GameObject postProcess_ = GFunc.GetRootObj("Postprocess");
 
             postProControl = postProcess_.GetComponent<PostproControl>();
+
+            GameObject actionObj_ = gameUIObj_.transform.GetChild(4).gameObject;
+            
+            for(int i = 0; i < 3; i++)
+            {
+                actionTxts[i] = actionObj_.transform.GetChild(i).gameObject;
+                actionTxts[i].SetActive(false);
+            }
 
         }
     }
