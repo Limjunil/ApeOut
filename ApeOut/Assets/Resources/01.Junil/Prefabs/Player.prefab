@@ -434,6 +434,7 @@ MonoBehaviour:
   playerHp: 0
   isDead: 0
   playerHPUIObj: {fileID: 0}
+  eventCount: 0
 --- !u!114 &3554931051247385495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1454,7 +1455,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a798f2f9eca26dc429049c56ceab8c8c, type: 2}
+  - {fileID: 2100000, guid: 92f68ab7f228f414f9a861234873c3e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

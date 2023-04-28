@@ -48,8 +48,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   mapPrefabsUse:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   mapPosObj: {fileID: 0}
+  loadUIControl: {fileID: 0}
+  cntMap: 0

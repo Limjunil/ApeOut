@@ -8,13 +8,15 @@ using UnityEngine.SceneManagement;
 public class MapManager : GSingleton<MapManager>
 {
 
-    public GameObject[] mapPrefabs = new GameObject[4];
+    public GameObject[] mapPrefabs = default;
 
-    public GameObject[] mapPrefabsUse = new GameObject[4];
+    public List<GameObject> mapPrefabsUse = new List<GameObject>();
 
     public GameObject mapPosObj = default;
 
     public LoadingUIControl loadUIControl = default;
+
+    public List<GameObject> waypointPos = new List<GameObject>();
 
     public int cntMap = 0;
 
@@ -22,29 +24,35 @@ public class MapManager : GSingleton<MapManager>
     {
         base.Start();
 
+
         SceneManager.sceneLoaded += LoadedsceneEvent;
 
         Scene scene_ = SceneManager.GetActiveScene();
 
         //if (scene_.name == RDefine.PLAY_SCENE)
         //{
+        //    GFunc.Log("맵 호출 1");
         //    SetUpMapManager();
         //}
     }
 
     public void LoadedsceneEvent(Scene scene_, LoadSceneMode load)
     {
-        GFunc.Log("일시정지 호출됨");
+        
 
         if (scene_.name == RDefine.PLAY_SCENE)
         {
+            GFunc.Log("맵 호출 2");
             SetUpMapManager();
         }
     }
 
     void SetUpMapManager()
     {
-        mapPrefabs = Resources.LoadAll<GameObject>("01.Junil/Prefabs/Map");
+        mapPrefabs = new GameObject[4];
+        //mapPrefabsUse
+
+        mapPrefabs = Resources.LoadAll<GameObject>("02.YMG/Prefab/Maps/Stage");
 
         mapPosObj = GFunc.GetRootObj("MapPosObj");
 
@@ -58,25 +66,45 @@ public class MapManager : GSingleton<MapManager>
         cntMap = 0;
 
         GetMapPrefabs();
+
+        SetStage();
     }
 
     private void GetMapPrefabs()
     {
-        for(int i = 0; i < 3; i++)
+        if (mapPrefabsUse.Count != 0)
         {
-            mapPrefabsUse[i] = Instantiate(mapPrefabs[i], Vector3.zero, Quaternion.identity, mapPosObj.transform);
-            
+            mapPrefabsUse.Clear();
         }
+
+        for (int i = 0; i < 4; i++)
+        {
+
+            mapPrefabsUse.Add(Instantiate(mapPrefabs[i], Vector3.zero, Quaternion.identity, mapPosObj.transform));
+
+        }
+
 
         AllOffStage();
 
     }
 
+    public override void Update()
+    {
+        //if (Input.GetKeyDown(KeyCode.X))
+        //{
+        //    AddCountMap();
+
+        //    SetStage();
+        //}
+    }
+
     public void SetStage()
     {
-        loadUIControl.LoadUI();
+        //loadUIControl.LoadUI();
 
         AllOffStage();
+
 
         mapPrefabsUse[cntMap].SetActive(true);
 
@@ -87,6 +115,8 @@ public class MapManager : GSingleton<MapManager>
             stage.RemoveData();
             stage.BuildNavMesh();
         }
+
+
     }
 
     public void AddCountMap()
@@ -96,9 +126,41 @@ public class MapManager : GSingleton<MapManager>
 
     public void AllOffStage()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             mapPrefabsUse[i].SetActive(false);
         }
     }
+
+    public void ChangeMap(string mapName_)
+    {
+        switch (mapName_)
+        {
+            case "StageOneEnd":
+                loadUIControl.LoadUI();
+
+                PlayerManager.Instance.player.transform.localPosition = Vector3.zero;
+                AddCountMap();
+                SetStage();
+                break;
+
+            case "StageTwoEnd":
+                loadUIControl.LoadUI();
+
+                PlayerManager.Instance.player.transform.localPosition = Vector3.zero;
+                AddCountMap();
+                SetStage();
+                break;
+
+            case "StageThreeEnd":
+                loadUIControl.LoadUI();
+
+                PlayerManager.Instance.player.transform.localPosition = Vector3.zero;
+                AddCountMap();
+                SetStage();
+                break;
+        }
+    }
+
+
 }

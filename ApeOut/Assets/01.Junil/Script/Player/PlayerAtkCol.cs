@@ -24,10 +24,11 @@ public class PlayerAtkCol : MonoBehaviour
 
                 tempEnemyRigid_.AddForce(transform.forward * PUNCH_FORCE, ForceMode.Impulse);
 
-                if(PlayerManager.Instance.player.eventCount < 3)
-                {
-                    UIManager.Instance.OnActionUI(PlayerManager.Instance.player.eventCount);
-                }
+                other.gameObject.GetComponent<EnemyBase>().isHitPlayer = true;
+                //if(PlayerManager.Instance.player.eventCount < 3)
+                //{
+                //    UIManager.Instance.OnActionUI(PlayerManager.Instance.player.eventCount);
+                //}
             }
 
             if(PlayerManager.Instance.player.playerAttack.isGrabChk == true)

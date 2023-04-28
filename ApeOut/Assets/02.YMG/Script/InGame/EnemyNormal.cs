@@ -24,13 +24,6 @@ public class EnemyNormal : EnemyBase
     {
         isHitPlayer = false;
 
-    }
-
-    public override void Awake()
-    {
-        base.Awake();
-        //자식에서 추가로 동작할 내용
-
         spawnRate = AttackAnime.length;
         enemyBulleyVal = 30;
         enemyBulletPack = new GameObject[enemyBulleyVal];
@@ -49,6 +42,31 @@ public class EnemyNormal : EnemyBase
 
             enemyBulletPack[i].SetActive(false);
         }
+    }
+
+    public override void Awake()
+    {
+        base.Awake();
+        //자식에서 추가로 동작할 내용
+
+        //spawnRate = AttackAnime.length;
+        //enemyBulleyVal = 30;
+        //enemyBulletPack = new GameObject[enemyBulleyVal];
+        //chkBullet = 0;
+
+        //enemyRigid = gameObject.GetComponent<Rigidbody>();
+
+        ////laserLine = GetComponent<LineRenderer>(); //
+        ////laserLine.positionCount = 2; //
+
+        ////lR = GetComponent<LineRenderer>(); ///
+
+        //for (int i = 0; i < enemyBulleyVal; i++)
+        //{
+        //    enemyBulletPack[i] = Instantiate(bulletPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+
+        //    enemyBulletPack[i].SetActive(false);
+        //}
 
     }
 
@@ -59,32 +77,32 @@ public class EnemyNormal : EnemyBase
 
         if (state == State.Guard)
         {
-            Debug.Log("경계 상태");
+            //Debug.Log("경계 상태");
             Guard();
         }
         else if (state == State.Action)
         {
-            Debug.Log("행동 상태");
+            //Debug.Log("행동 상태");
             Range();
         }
         else if (state == State.Engage )
         {
-            Debug.Log("공격 상태");
+            //Debug.Log("공격 상태");
             Engage();
         }
         else if (state == State.Move)
         {
-            Debug.Log("이동 상태");
+            //Debug.Log("이동 상태");
             Move();
         }
         else if (state == State.Patrol)
         {
-            Debug.Log("순찰 상태");
+            //Debug.Log("순찰 상태");
             Patrol();
         }
         else if(state == State.hold)
         {
-            Debug.Log("홀드 상태");
+            //Debug.Log("홀드 상태");
             HoldEnemy();
         }
 
@@ -177,7 +195,7 @@ public class EnemyNormal : EnemyBase
 
     public static bool InFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius) //! 기즈모 레이
     {
-        Collider[] overlaps = new Collider[20];
+        Collider[] overlaps = new Collider[100];
         // Overlap중첩 Sphere구면 Non Allocate비 할당
         int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
 

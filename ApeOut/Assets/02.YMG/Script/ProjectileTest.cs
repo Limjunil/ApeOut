@@ -29,9 +29,9 @@ public class ProjectileTest : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == RDefine.PLAYER_TAG)
         {
-            //Debug.Log("Hit");
+            PlayerManager.Instance.player.playerHp--;
         }
     }
 

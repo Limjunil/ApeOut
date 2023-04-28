@@ -45,6 +45,7 @@ public class Bomb : MonoBehaviour
         if (other.CompareTag(RDefine.PLAYER_TAG)) 
         {
             Debug.Log("Player_in_Area");
+            PlayerManager.Instance.player.playerHp--;
         }
     }
 

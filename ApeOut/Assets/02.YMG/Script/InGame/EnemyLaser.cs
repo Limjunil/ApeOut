@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyLaser : EnemyBase
 {
-    public int enemyBulleyVal = 30;
-    public GameObject[] enemyBulletPack = default;
 
     public int chkBullet = 0;
 
@@ -14,6 +13,8 @@ public class EnemyLaser : EnemyBase
 
     //private LineRenderer lR; //
     public Transform startPoint; //
+
+    public bool isPlayerChk = false;
 
     private void OnDisable()
     {
@@ -24,16 +25,7 @@ public class EnemyLaser : EnemyBase
     {
         isHitPlayer = false;
 
-    }
-
-    public override void Awake()
-    {
-        base.Awake();
-        //자식에서 추가로 동작할 내용
-
         spawnRate = AttackAnime.length;
-        enemyBulleyVal = 30;
-        enemyBulletPack = new GameObject[enemyBulleyVal];
         chkBullet = 0;
 
         enemyRigid = gameObject.GetComponent<Rigidbody>();
@@ -42,13 +34,31 @@ public class EnemyLaser : EnemyBase
         //laserLine.positionCount = 2; //
 
         //lR = GetComponent<LineRenderer>(); ///
+    }
 
-        for (int i = 0; i < enemyBulleyVal; i++)
-        {
-            enemyBulletPack[i] = Instantiate(bulletPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+    public override void Awake()
+    {
+        base.Awake();
+        //자식에서 추가로 동작할 내용
 
-            enemyBulletPack[i].SetActive(false);
-        }
+        //spawnRate = AttackAnime.length;
+        //enemyBulleyVal = 30;
+        //enemyBulletPack = new GameObject[enemyBulleyVal];
+        //chkBullet = 0;
+
+        //enemyRigid = gameObject.GetComponent<Rigidbody>();
+
+        ////laserLine = GetComponent<LineRenderer>(); //
+        ////laserLine.positionCount = 2; //
+
+        ////lR = GetComponent<LineRenderer>(); ///
+
+        //for (int i = 0; i < enemyBulleyVal; i++)
+        //{
+        //    enemyBulletPack[i] = Instantiate(bulletPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+
+        //    enemyBulletPack[i].SetActive(false);
+        //}
 
     }
 
@@ -59,32 +69,32 @@ public class EnemyLaser : EnemyBase
 
         if (state == State.Guard)
         {
-            Debug.Log("경계 상태");
+            //Debug.Log("경계 상태");
             Guard();
         }
         else if (state == State.Action)
         {
-            Debug.Log("행동 상태");
+            //Debug.Log("행동 상태");
             Range();
         }
         else if (state == State.Engage )
         {
-            Debug.Log("공격 상태");
+            //Debug.Log("공격 상태");
             Engage();
         }
         else if (state == State.Move)
         {
-            Debug.Log("이동 상태");
+            //Debug.Log("이동 상태");
             Move();
         }
         else if (state == State.Patrol)
         {
-            Debug.Log("순찰 상태");
+            //Debug.Log("순찰 상태");
             Patrol();
         }
         else if(state == State.hold)
         {
-            Debug.Log("홀드 상태");
+            //Debug.Log("홀드 상태");
             HoldEnemy();
         }
 
@@ -131,6 +141,9 @@ public class EnemyLaser : EnemyBase
     public override void Shot()
     {
         base.Shot();
+
+        isPlayerChk = false;
+
         // 최근 생성 시점에서부터 누적된 시간이 생성 주기보다 크거나 같다면
         if (timeAfterSpawn >= spawnRate)
         {
@@ -150,7 +163,13 @@ public class EnemyLaser : EnemyBase
                 if (hit.transform.tag == "Player")
                 {
                     Debug.Log("Player");
-                    //Destroy(hit.transform.gameObject);
+                    if(isPlayerChk == false)
+                    {
+                        PlayerManager.Instance.player.playerHp--;
+                    }
+
+                    isPlayerChk = true;
+
                 }
             }
             else { lR.SetPosition(1, transform.forward * 50); }
@@ -174,10 +193,20 @@ public class EnemyLaser : EnemyBase
         
     }
 
+    public override void Engage()
+    {
+        base.Engage();
+
+        if (state != State.Engage)
+        {
+
+            lR.enabled = false;
+        }
+    }
 
     public static bool InFOV(Transform checkingObject, Transform target, float maxAngle, float maxRadius) //! 기즈모 레이
     {
-        Collider[] overlaps = new Collider[20];
+        Collider[] overlaps = new Collider[100];
         // Overlap중첩 Sphere구면 Non Allocate비 할당
         int count = Physics.OverlapSphereNonAlloc(checkingObject.position, maxRadius, overlaps);
 

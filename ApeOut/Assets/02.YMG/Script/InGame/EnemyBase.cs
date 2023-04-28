@@ -235,11 +235,11 @@ public class EnemyBase : MonoBehaviour
             state = State.Action; // 이동 상태
         }
 
-        if (state != State.Engage)
-        {
+        //if (state != State.Engage)
+        //{
 
-            lR.enabled = false;
-        }
+        //    lR.enabled = false;
+        //}
 
     }
 

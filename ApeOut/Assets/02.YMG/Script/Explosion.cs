@@ -108,18 +108,18 @@ public class Explosion : MonoBehaviour
         pieceTemp_.transform.position = transform.position + new Vector3
             (cubeSize * x, cubeSize * y, cubeSize * z) - cubesPivot;
 
-        Debug.Log($"{pieceTemp_.transform.localScale}");
+        //Debug.Log($"{pieceTemp_.transform.localScale}");
 
         pieceTemp_.transform.localScale = new Vector3(cubeSize, cubeSize, cubeSize);
 
-        Debug.Log($"{pieceTemp_.transform.localScale}");
+        //Debug.Log($"{pieceTemp_.transform.localScale}");
 
 
         // add rigidbody and set mass
         pieceTemp_.AddComponent<Rigidbody>();
         pieceTemp_.GetComponent<Rigidbody>().mass = cubeSize;
 
-        Debug.Log($"{pieceTemp_.transform.localScale}");
+        //Debug.Log($"{pieceTemp_.transform.localScale}");
 
     }
 
