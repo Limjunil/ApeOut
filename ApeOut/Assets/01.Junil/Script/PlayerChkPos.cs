@@ -18,14 +18,6 @@ public class PlayerChkPos : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            ViewPlayerWay();
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +36,7 @@ public class PlayerChkPos : MonoBehaviour
         playerChkPos.positionCount = setPosCnt + 1;
 
         Vector3 playerPos_ = PlayerManager.Instance.player.transform.position;
+        playerPos_.y = 0f;
 
         playerChkPos.SetPosition(setPosCnt, playerPos_);
 
@@ -54,6 +47,8 @@ public class PlayerChkPos : MonoBehaviour
 
     public void StartPlayerChk()
     {
+        StopPlayerChk();
+
         playerChkPos.positionCount = 0;
 
         setPosCnt = 0;
@@ -81,6 +76,7 @@ public class PlayerChkPos : MonoBehaviour
             playerChkPos.positionCount = setPosCnt + 1;
 
             Vector3 playerPos_ = PlayerManager.Instance.player.transform.position;
+            playerPos_.y = 0f;
 
             playerChkPos.SetPosition(setPosCnt, playerPos_);
 

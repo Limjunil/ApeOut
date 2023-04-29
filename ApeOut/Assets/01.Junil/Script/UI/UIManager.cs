@@ -33,6 +33,9 @@ public class UIManager : GSingleton<UIManager>
 
     public GameObject[] actionTxts = new GameObject[3];
 
+    public GameObject endUIObj = default;
+
+
 
     protected override void Init()
     {
@@ -174,6 +177,9 @@ public class UIManager : GSingleton<UIManager>
                 actionTxts[i] = actionObj_.transform.GetChild(i).gameObject;
                 actionTxts[i].SetActive(false);
             }
+
+            endUIObj = gameUIObj_.transform.GetChild(5).gameObject;
+            endUIObj.transform.localScale = new Vector3(0.0001f, 0.0001f, 0.0001f);
 
         }
     }

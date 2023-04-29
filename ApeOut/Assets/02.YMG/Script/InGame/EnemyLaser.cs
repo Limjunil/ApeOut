@@ -165,7 +165,7 @@ public class EnemyLaser : EnemyBase
                     Debug.Log("Player");
                     if(isPlayerChk == false)
                     {
-                        PlayerManager.Instance.player.playerHp--;
+                        PlayerManager.Instance.player.DamagePlayer();
                     }
 
                     isPlayerChk = true;

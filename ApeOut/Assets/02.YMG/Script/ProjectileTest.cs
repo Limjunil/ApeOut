@@ -31,7 +31,7 @@ public class ProjectileTest : MonoBehaviour
     {
         if (other.tag == RDefine.PLAYER_TAG)
         {
-            PlayerManager.Instance.player.playerHp--;
+            PlayerManager.Instance.player.DamagePlayer();
         }
     }
 

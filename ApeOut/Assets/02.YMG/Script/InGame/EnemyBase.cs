@@ -301,6 +301,11 @@ public class EnemyBase : MonoBehaviour
 
         if (collision.collider.CompareTag("Wall") && isHitPlayer == true)
         {
+            GameObject enemySound_ = GFunc.GetRootObj("EnemyEffectSound");
+            AudioSource enemyAudio_ = enemySound_.GetComponent<AudioSource>();
+            enemyAudio_.clip = SoundManager.Instance.enemySounds;
+            enemyAudio_.Play();
+
             // Explosion
             if (!isHasExploded)
             {
@@ -313,6 +318,7 @@ public class EnemyBase : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
 
     public virtual void FaceTarget() //! 바라보는 기능
     {

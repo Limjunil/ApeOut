@@ -258,10 +258,9 @@ MonoBehaviour:
   enemyRigid: {fileID: 0}
   lR: {fileID: 0}
   state: 0
-  enemyBulleyVal: 30
-  enemyBulletPack: []
   chkBullet: 0
   startPoint: {fileID: 5814628360814861096}
+  isPlayerChk: 0
 --- !u!1 &5814628360814861097
 GameObject:
   m_ObjectHideFlags: 0

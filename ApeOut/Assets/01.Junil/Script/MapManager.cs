@@ -89,19 +89,9 @@ public class MapManager : GSingleton<MapManager>
 
     }
 
-    public override void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.X))
-        //{
-        //    AddCountMap();
-
-        //    SetStage();
-        //}
-    }
 
     public void SetStage()
     {
-        //loadUIControl.LoadUI();
 
         AllOffStage();
 
@@ -116,6 +106,8 @@ public class MapManager : GSingleton<MapManager>
             stage.BuildNavMesh();
         }
 
+        int childCnt_ = mapPrefabsUse[cntMap].transform.childCount;
+        mapPrefabsUse[cntMap].transform.GetChild(childCnt_ - 1).gameObject.SetActive(true);
 
     }
 
@@ -138,26 +130,41 @@ public class MapManager : GSingleton<MapManager>
         {
             case "StageOneEnd":
                 loadUIControl.LoadUI();
-
+                SoundManager.Instance.SetStageBg(mapName_);
                 PlayerManager.Instance.player.transform.localPosition = Vector3.zero;
+                PlayerManager.Instance.player.playerHp = 3;
                 AddCountMap();
                 SetStage();
+                UIManager.Instance.playerChkPos.StartPlayerChk();
                 break;
 
             case "StageTwoEnd":
                 loadUIControl.LoadUI();
+                SoundManager.Instance.SetStageBg(mapName_);
 
                 PlayerManager.Instance.player.transform.localPosition = Vector3.zero;
+                PlayerManager.Instance.player.playerHp = 3;
+
                 AddCountMap();
                 SetStage();
                 break;
 
             case "StageThreeEnd":
                 loadUIControl.LoadUI();
+                SoundManager.Instance.SetStageBg(mapName_);
 
                 PlayerManager.Instance.player.transform.localPosition = Vector3.zero;
+                PlayerManager.Instance.player.playerHp = 3;
+
                 AddCountMap();
                 SetStage();
+                break;
+
+            case "StageFourEnd":
+                // 게임 종료
+                
+                UIManager.Instance.endUIObj.transform.localScale = Vector3.one;
+                PlayerManager.Instance.player.isEnd = true;
                 break;
         }
     }

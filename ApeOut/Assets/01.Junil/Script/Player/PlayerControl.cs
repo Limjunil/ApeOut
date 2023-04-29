@@ -30,6 +30,15 @@ public class PlayerControl : MonoBehaviour
 
     public int eventCount = default;
 
+    public AudioSource playerAudio = default;
+
+    public bool isEnd = false;
+
+    public bool isDamagePlayer = false;
+
+    public SkinnedMeshRenderer playerNowMesh = default;
+
+
     private void Awake()
     {
         // 플레이어 싱글톤 호출
@@ -56,6 +65,17 @@ public class PlayerControl : MonoBehaviour
 
         eventCount = 0;
 
+        playerAudio = gameObject.GetComponent<AudioSource>();
+        playerAudio.playOnAwake = false;
+        playerAudio.loop = false;
+
+        isEnd = false;
+        isDamagePlayer = false;
+
+        GameObject mesh_ = gameObject.transform.GetChild(1).gameObject;
+
+        playerNowMesh = mesh_.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>();
+
         playerAnimator.SetTrigger("OnIdle");
     }
 
@@ -64,8 +84,9 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         // 죽으면 정지
-        if(isDead == true || UIManager.Instance.isOpenPause == true)
+        if(isDead == true || UIManager.Instance.isOpenPause == true || isEnd == true)
         {
+            
             return;
         }
 
@@ -114,19 +135,60 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        //GFunc.Log($"카메라 스크린 월드 : {Camera.main.WorldToScreenPoint(Input.mousePosition)}");
-        //GFunc.Log($"플레이어 : {Camera.main.WorldToScreenPoint(gameObject.transform.position)}");
+    }
+
+    IEnumerator playerHit()
+    {
+        isDamagePlayer = true;
+        Debug.Log(playerNowMesh.material.mainTexture);
+
+        for(int i = 0; i < 4; i++)
+        {
+            playerNowMesh.material = UIManager.Instance.playerMaterials[1];
+            yield return new WaitForSeconds(0.25f);
+
+            playerNowMesh.material = UIManager.Instance.playerMaterials[0];
+            yield return new WaitForSeconds(0.25f);
+
+
+        }
+
+        isDamagePlayer = false;
 
     }
 
     //! 플레이어 사망 시 호출
     public void PlayerDie()
     {
+        playerAudio.clip = SoundManager.Instance.playerSounds[1];
+        playerAudio.Play();
+
         // 플레이어가 죽게 되면 죽는 애니메이션과 죽는 액션의 카메라 호출
         playerAnimator.SetTrigger("isDead");
 
         PlayerManager.Instance.mainCamera.DeadCameraMove();
 
+    }
+
+    public void DamagePlayer()
+    {
+        if(isDamagePlayer == true)
+        {
+            return;
+        }
+        else
+        {
+            playerHp--;
+
+            if(playerHp <= 0)
+            {
+                return;
+            }
+            else
+            {
+                StartCoroutine(playerHit());
+            }
+        }
     }
 
     public void ViewPlayerHp()

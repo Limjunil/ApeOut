@@ -39,6 +39,15 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PlayerManager.Instance.player.isDead == true 
+            || UIManager.Instance.isOpenPause == true 
+            || PlayerManager.Instance.player.isEnd == true)
+        {
+            moveX = 0f;
+            moveZ = 0f;
+            return;
+        }
+
         moveX = Input.GetAxisRaw(moveAxisNameX);
         moveZ = Input.GetAxisRaw(moveAxisNameZ);
 

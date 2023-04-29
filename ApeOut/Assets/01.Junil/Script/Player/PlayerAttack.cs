@@ -51,6 +51,7 @@ public class PlayerAttack : MonoBehaviour
     // 공격할 때 일정 시간 후 공격 콜라이더를 켰다가 끄는 코루틴
     IEnumerator OnOffAtkCol()
     {
+        
         isAttackChk = true;
 
         yield return new WaitForSeconds(0.3f);

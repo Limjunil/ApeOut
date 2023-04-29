@@ -13,6 +13,8 @@ public class ManagerCall : MonoBehaviour
         OptionUIControl.Instance.Create();
         UIManager.Instance.Create();
         MapManager.Instance.Create();
+        SoundManager.Instance.Create();
+
 
 
         GFunc.LoadScene(RDefine.TITLE_SCENE);

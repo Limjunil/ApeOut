@@ -34,7 +34,7 @@ public class LoadingUIControl : MonoBehaviour
 
         while (true)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.4f);
 
             if(1f <= timer)
             {
@@ -44,7 +44,7 @@ public class LoadingUIControl : MonoBehaviour
                 yield break;
             }
             
-            timer += 0.2f;
+            timer += 0.25f;
             loadingBar.fillAmount = timer;
 
         }
