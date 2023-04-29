@@ -32,8 +32,6 @@ public class PauseUIControl : GSingleton<PauseUIControl>
 
     public void LoadedsceneEvent(Scene scene_, LoadSceneMode load)
     {
-        //string sceneName_ = SceneManager.GetActiveScene().name;
-        GFunc.Log("일시정지 호출됨");
 
         if (scene_.name == RDefine.PLAY_SCENE)
         {

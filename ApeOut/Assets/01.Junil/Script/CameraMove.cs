@@ -67,7 +67,7 @@ public class CameraMove : MonoBehaviour
 
         gameObject.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
 
-        Camera.main.backgroundColor = Color.white;
+        Camera.main.backgroundColor = new Color32(44, 44, 44, 255);
 
         isEndDeadScene = false;
 

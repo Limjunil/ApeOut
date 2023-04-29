@@ -20,9 +20,6 @@ public class PlayerAtkCol : MonoBehaviour
         {
             if(PlayerManager.Instance.player.playerAttack.isAttackChk == true)
             {
-                GFunc.Log("적 맞았음!");
-
-                
                 PlayerManager.Instance.mainCamera.isShake = true;
 
                 Rigidbody tempEnemyRigid_ = other.gameObject.GetComponent<Rigidbody>();
@@ -38,8 +35,6 @@ public class PlayerAtkCol : MonoBehaviour
 
             if(PlayerManager.Instance.player.playerAttack.isGrabChk == true)
             {
-                GFunc.Log("적 잡았음!");
-
                 other.GetComponent<EnemyBase>().HoldToPlayer();
             }
         }

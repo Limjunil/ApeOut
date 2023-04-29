@@ -75,6 +75,7 @@ public class PlayerControl : MonoBehaviour
         GameObject mesh_ = gameObject.transform.GetChild(1).gameObject;
 
         playerNowMesh = mesh_.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>();
+        playerAudio.volume = OptionUIControl.Instance.soundVal / (float)10;
 
         playerAnimator.SetTrigger("OnIdle");
     }

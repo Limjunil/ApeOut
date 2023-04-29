@@ -10,10 +10,10 @@ public class ManagerCall : MonoBehaviour
         // pauseUI 싱글톤 호출
         PauseUIControl.Instance.Create();
         TitleMenuControl.Instance.Create();
+        SoundManager.Instance.Create();
         OptionUIControl.Instance.Create();
         UIManager.Instance.Create();
         MapManager.Instance.Create();
-        SoundManager.Instance.Create();
 
 
 

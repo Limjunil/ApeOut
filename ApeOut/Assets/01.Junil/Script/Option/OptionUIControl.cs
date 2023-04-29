@@ -45,8 +45,10 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
     public bool isFullTemp;
     public int chkScreenValTemp;
+    public int soundValTemp;
     public int shakeValTemp;
 
+    
     // Start is called before the first frame update
     public override void Start()
     {
@@ -72,6 +74,7 @@ public class OptionUIControl : GSingleton<OptionUIControl>
         isFullTemp = isFull;
         chkScreenValTemp = chkScreenVal;
         shakeValTemp = shakeVal;
+        soundValTemp = soundVal;
 
         if (isFull == false)
         {
@@ -84,7 +87,12 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
         PlayerPrefs.SetInt("chkScreenVal", chkScreenVal);
 
+        PlayerPrefs.SetInt("soundForce", soundVal);
+
         PlayerPrefs.SetInt("shakeForce", shakeVal);
+
+
+
     }
 
 
@@ -96,7 +104,6 @@ public class OptionUIControl : GSingleton<OptionUIControl>
             StartCoroutine(MoveTitle(isOpenOption));
             titleBtns.transform.localScale = closeUISize;
 
-            // 
 
             SetNowOption();
             NowOptionText();
@@ -111,6 +118,7 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
             isFull = isFullTemp;
             chkScreenVal = chkScreenValTemp;
+            soundVal = soundValTemp;
             shakeVal = shakeValTemp;
 
             titleBtns.transform.localScale = Vector3.one;
@@ -272,6 +280,8 @@ public class OptionUIControl : GSingleton<OptionUIControl>
 
         Screen.SetResolution(
             screenWidth[chkScreenVal], screenHeight[chkScreenVal], screenMode);
+
+        SoundManager.Instance.ResetSoundVal();
     }
 
 
@@ -326,6 +336,14 @@ public class OptionUIControl : GSingleton<OptionUIControl>
         if (soundVal == default)
         {
             soundVal = 10;
+        }
+
+        soundVal = PlayerPrefs.GetInt("soundForce");
+
+        if(soundVal == 0)
+        {
+            PlayerPrefs.SetInt("soundForce", 10);
+            soundVal = PlayerPrefs.GetInt("soundForce");
         }
 
         shakeVal = PlayerPrefs.GetInt("shakeForce");

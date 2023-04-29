@@ -42,7 +42,6 @@ public class MapManager : GSingleton<MapManager>
 
         if (scene_.name == RDefine.PLAY_SCENE)
         {
-            GFunc.Log("맵 호출 2");
             SetUpMapManager();
         }
     }
@@ -162,7 +161,8 @@ public class MapManager : GSingleton<MapManager>
 
             case "StageFourEnd":
                 // 게임 종료
-                
+                SoundManager.Instance.SetStageBg(mapName_);
+
                 UIManager.Instance.endUIObj.transform.localScale = Vector3.one;
                 PlayerManager.Instance.player.isEnd = true;
                 break;

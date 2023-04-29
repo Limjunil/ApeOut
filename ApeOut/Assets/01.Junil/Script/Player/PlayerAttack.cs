@@ -27,8 +27,6 @@ public class PlayerAttack : MonoBehaviour
     //! 플레이어 공격 함수
     public void OnAttack()
     {
-        GFunc.Log("곰 공격!");
-
         StartCoroutine(OnOffAtkCol());
     }
 
@@ -36,16 +34,12 @@ public class PlayerAttack : MonoBehaviour
     public void OnHold()
     {
         StartCoroutine(OnOffHoldCol());
-        // 적 스크립트 안에 bool 값을 true로 변경 한다.
     }
 
     //! 플레이어가 적을 놓아주는 함수
     public void OffHold()
     {
         isGrabChk = false;
-        GFunc.Log("적 놓았음!");
-
-        // 적 스크립트 안에 bool 값을 false로 변경 한다.
     }
 
     // 공격할 때 일정 시간 후 공격 콜라이더를 켰다가 끄는 코루틴

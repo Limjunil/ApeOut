@@ -32,10 +32,16 @@ public class SoundManager : GSingleton<SoundManager>
         SetUpSoundManager();
     }
 
+    public void ResetSoundVal()
+    {
+        soundSetObj.volume = OptionUIControl.Instance.soundVal / (float)10;
+
+    }
+
+
     // Start is called before the first frame update
     void SetUpSoundManager()
     {
-        GFunc.Log("사운드 셋업");
         stageSounds = Resources.LoadAll<AudioClip>("01.Junil/Sound/StageSound");
         playerSounds = Resources.LoadAll<AudioClip>("01.Junil/Sound/PlayerSound");
         mainSounds = Resources.Load<AudioClip>("01.Junil/Sound/Main/MenuMusic");
@@ -47,9 +53,9 @@ public class SoundManager : GSingleton<SoundManager>
         soundSetObj.loop = false;
         soundSetObj.playOnAwake = false;
 
+        ResetSoundVal();
         SetMainBg();
     }
-
 
     public void SetStageBg(string mapName_)
     {
@@ -68,11 +74,13 @@ public class SoundManager : GSingleton<SoundManager>
                 break;
 
             case "StageThreeEnd":
-                //
+                soundSetObj.clip = mainSounds;
+                soundSetObj.loop = true;
+                soundSetObj.Play();
                 break;
 
             case "StageFourEnd":
-                soundSetObj.clip = mainSounds;
+                soundSetObj.clip = loadingSounds;
                 soundSetObj.loop = true;
                 soundSetObj.Play();
                 break;
