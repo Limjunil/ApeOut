@@ -26,7 +26,6 @@ public class PauseUIBtnControl : MonoBehaviour
     //! 마우스가 재개 버튼을 클릭하면 발동
     public void OnClickResumeBtn()
     {
-        GFunc.Log("다시 게임 시작");
         UIManager.Instance.OnOffPauseUI();
     }
 
@@ -34,7 +33,6 @@ public class PauseUIBtnControl : MonoBehaviour
     public void OnClickRestartBtn()
     {
 
-        GFunc.Log("게임 재 시작");
         Time.timeScale = 1;
         LoadingSceneControl.LoadSceneScene(RDefine.PLAY_SCENE);
 
@@ -46,7 +44,6 @@ public class PauseUIBtnControl : MonoBehaviour
     public void OnClickRetitleBtn()
     {
         
-        GFunc.Log("타이틀로 돌아가기");
         UIManager.Instance.Retitle();
     }
 
