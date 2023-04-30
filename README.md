@@ -25,6 +25,11 @@ Make a ApeOut Game Project
 23/04/25 - Make DeadUI    
 23/04/26 - Make Runtime NavBake and DeadUI func    
 23/04/27 - Make LoadUI and LoadScene    
+23/04/28 - Make Sound and MapManager    
+23/04/28 - final proto    
+23/04/29 - Make SoundManager and Build proto    
+23/04/30 - Make a Final    
+
 
 
 ## [YMG]
