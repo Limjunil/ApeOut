@@ -118,6 +118,8 @@ Stop Action은 파티클 시스템이 정지한 후의 행동을 설정하는데
     Use World Space 체크    
     
 
+04/28
+    final proto
     
     
     
