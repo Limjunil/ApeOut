@@ -76,12 +76,6 @@ public class PauseUIControl : GSingleton<PauseUIControl>
 
     }
 
-    ////! 일시정지 메뉴를 종료하는 함수
-    //public void OffPauseMenu()
-    //{
-    //    pauseUIObj.transform.localScale = new Vector3(0.0001f, 0.0001f, 0.0001f);
-    //}
-
 
     //! 일시정지 메뉴의 초기 값 설정
     public void FirstOpenPauseMenu()
@@ -122,29 +116,4 @@ public class PauseUIControl : GSingleton<PauseUIControl>
         }
     }
 
-
-    ////! 매개변수에 따라 무슨 처리를 해야하는지 정해주는 함수
-    //public void ChoosePauseMenu(string chooseTxtName_)
-    //{
-    //    switch (chooseTxtName_)
-    //    {
-    //        // 재개 : 다시 게임으로 돌아가기
-    //        case "ResumeTxt":
-    //            GFunc.Log("다시 게임 시작");
-    //            break;
-
-    //        // 재시작 : 게임을 처음부터 다시 시작
-    //        case "RestartTxt":
-    //            GFunc.Log("게임 재 시작");
-
-    //            break;
-
-    //        // 메인 메뉴 : 타이틀로 돌아가기
-    //        case "RetitleTxt":
-    //            GFunc.Log("타이틀로 돌아가기");
-
-
-    //            break;
-    //    }
-    //}
 }

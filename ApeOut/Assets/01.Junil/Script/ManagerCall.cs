@@ -7,7 +7,6 @@ public class ManagerCall : MonoBehaviour
     private void Awake()
     {
         PlayerManager.Instance.Create();
-        // pauseUI 싱글톤 호출
         PauseUIControl.Instance.Create();
         TitleMenuControl.Instance.Create();
         SoundManager.Instance.Create();

@@ -173,24 +173,6 @@ public class CameraMove : MonoBehaviour
 
     }
 
-    //public void WallCameraMove(Vector3 wallPos_)
-    //{
-    //    isWallChk = true;
-
-    //    Vector3 testPos_ = wallPos_ - gameObject.transform.position;
-
-    //    Vector3 moveCamera_ = -1f * testPos_;
-
-    //    Vector3 tempWallPos_ = new Vector3(wallPos_.x, 8f, wallPos_.z);
-    //    Vector3 targetCameraPos_ = new Vector3(moveCamera_.x, 8f, moveCamera_.z);
-
-
-    //    addPlusX = moveCamera_.x;
-    //    addPlusZ = moveCamera_.z;
-    //    //gameObject.transform.position = Vector3.Lerp(transform.position, targetCameraPos_, SPEED_CAMERA * Time.deltaTime);
-
-    //}
-
     // 카메라의 흔들리는 값은 코루틴으로 구한다
     IEnumerator ShakeCamera = default;
 

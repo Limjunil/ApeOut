@@ -29,11 +29,6 @@ public class MapManager : GSingleton<MapManager>
 
         Scene scene_ = SceneManager.GetActiveScene();
 
-        //if (scene_.name == RDefine.PLAY_SCENE)
-        //{
-        //    GFunc.Log("맵 호출 1");
-        //    SetUpMapManager();
-        //}
     }
 
     public void LoadedsceneEvent(Scene scene_, LoadSceneMode load)
@@ -49,7 +44,6 @@ public class MapManager : GSingleton<MapManager>
     void SetUpMapManager()
     {
         mapPrefabs = new GameObject[4];
-        //mapPrefabsUse
 
         mapPrefabs = Resources.LoadAll<GameObject>("02.YMG/Prefab/Maps/Stage");
 
